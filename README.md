@@ -34,6 +34,22 @@ npm run build
 npm run preview
 ```
 
+## Transparência do que está sendo alterado (sem jogar no escuro)
+
+Antes de qualquer commit, rode:
+
+```bash
+git status --short
+git diff --stat
+git diff
+```
+
+E para revisar o último commit:
+
+```bash
+git show --stat --name-only
+```
+
 ## Onde subir seus arquivos (logos/fotos/lottie/sfx)
 
 - `src/assets/logos/`

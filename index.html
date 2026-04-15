@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T.News — Canal Interno T.Group</title>
+<style>
+/* ─── FONTS ──────────────────────────────────── */
+@font-face {
+  font-family: 'Gonzaga';
+  src: url('assets/fonts/gonzaga-roman.ttf') format('truetype');
+  font-weight: 100 900; font-style: normal;
+}
+@font-face {
+  font-family: 'Gonzaga';
+  src: url('assets/fonts/gonzaga-italic.ttf') format('truetype');
+  font-weight: 100 900; font-style: italic;
+}
+@font-face {
+  font-family: 'Sisma';
+  src: url('assets/fonts/sisma-bold.otf') format('opentype');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Sisma';
+  src: url('assets/fonts/sisma-medium.otf') format('opentype');
+  font-weight: 500; font-style: normal;
+}
+
+/* ─── VARIABLES ──────────────────────────────── */
+:root {
+  --or: #FF5B1D; --ord: #C93A00; --orl: #FF8A5E; --orb: rgba(255,91,29,.14);
+  --cream: #FAF4EB; --dark: #0D0500; --dark2: #160800;
+  --yu: #FFAA00; --dr: #7AC231; --br: #2B72FF; --vn: #9B45FF;
+  --text: #FAF4EB; --dim: rgba(250,244,235,.42); --dimm: rgba(250,244,235,.62);
+  --ease: cubic-bezier(.22,1,.36,1); --easeIn: cubic-bezier(.4,0,1,1);
+  --fG: 'Gonzaga', Georgia, serif;
+  --fS: 'Sisma', 'Space Mono', monospace;
+  --fB: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ─── RESET ──────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+html, body { width:100%; height:100%; overflow:hidden; background:var(--dark); color:var(--text); font-family:var(--fB) }
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap');
+
+/* ─── GRAIN ──────────────────────────────────── */
+.grain { position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .5s steps(1) infinite }
+@keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(-5%,-8%)} 50%{transform:translate(8%,5%)} 75%{transform:translate(-3%,9%)} 100%{transform:translate(4%,-4%)} }
+
+/* ─── BRAND STRIP ────────────────────────────── */
+.bstrip { position:fixed; top:0; left:0; right:0; z-index:300; height:5px; display:grid; grid-template-columns:repeat(4,1fr) }
+.bs-yu{background:var(--yu)} .bs-dr{background:var(--dr)} .bs-br{background:var(--br)} .bs-vn{background:var(--vn)}
+
+/* ─── HEADER ─────────────────────────────────── */
+.hdr { position:fixed; top:5px; left:0; right:0; z-index:200; height:76px;
+  display:flex; align-items:center; justify-content:space-between; padding:0 48px;
+  background:rgba(13,5,0,.9); backdrop-filter:blur(28px) saturate(160%);
+  border-bottom:1px solid rgba(255,91,29,.1) }
+.logo-wrap { display:flex; align-items:center; gap:14px }
+.logo-img { height:32px; width:auto; object-fit:contain }
+.logo-div { width:1px; height:28px; background:rgba(250,244,235,.12) }
+.logo-txt { font-family:var(--fG); font-size:1.5rem; font-weight:700; letter-spacing:-.02em; color:var(--text) }
+.logo-dot { color:var(--or) }
+.logo-sub { font-family:var(--fS); font-size:.42rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase; margin-top:3px }
+.clk { text-align:center }
+.clk-t { font-family:var(--fS); font-size:2.4rem; font-weight:700; letter-spacing:.08em; line-height:1 }
+.clk-d { font-family:var(--fS); font-size:.48rem; color:var(--dim); letter-spacing:.2em; text-transform:uppercase; margin-top:4px }
+.mbtn { display:flex; align-items:center; gap:8px; padding:9px 20px; border-radius:100px;
+  background:var(--orb); border:1.5px solid rgba(255,91,29,.28); cursor:pointer; outline:none;
+  font-family:var(--fB); font-size:.8rem; color:var(--or); transition:all .3s var(--ease) }
+.mbtn:hover { background:rgba(255,91,29,.22); border-color:var(--or) }
+.ld { width:6px; height:6px; border-radius:50%; background:var(--or); display:none; animation:blink 1.6s ease-in-out infinite; flex-shrink:0 }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.1} }
+
+/* ─── MAIN WRAPPER ───────────────────────────── */
+.main { position:fixed; inset:0 }
+#sw { width:100%; height:100%; position:relative;
+  transition: opacity .55s var(--ease), transform .55s var(--ease), filter .55s var(--ease) }
+#sw.out { opacity:0; transform:scale(1.04) translateY(-14px); filter:blur(10px) }
+#sw.in-start { opacity:0; transform:scale(0.96) translateY(24px); filter:blur(10px); transition:none }
+#sw.in { opacity:1; transform:none; filter:blur(0) }
+
+/* ─── SCENE BASE ─────────────────────────────── */
+.scene { width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+  padding:90px 48px 68px; position:relative; overflow:hidden }
+.s1{animation:su .7s var(--ease) .05s both} .s2{animation:su .7s var(--ease) .18s both}
+.s3{animation:su .7s var(--ease) .3s both}  .s4{animation:su .7s var(--ease) .42s both}
+.s5{animation:su .7s var(--ease) .54s both} .s6{animation:su .7s var(--ease) .66s both}
+@keyframes su { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+.glass { background:rgba(255,255,255,.07); backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid rgba(255,255,255,.14); border-radius:22px;
+  box-shadow:0 8px 32px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.18) }
+
+/* ─── WELCOME ────────────────────────────────── */
+.wel { flex-direction:column; text-align:center }
+.blobs { position:absolute; inset:0; overflow:hidden; pointer-events:none }
+.blob { position:absolute; border-radius:50%; filter:blur(90px); animation:blobmv 14s ease-in-out infinite }
+.b1{width:560px;height:560px;background:var(--or);top:-15%;left:-10%;opacity:.34;animation-delay:0s}
+.b2{width:440px;height:440px;background:var(--br);top:15%;right:-8%;opacity:.26;animation-delay:-5s}
+.b3{width:380px;height:380px;background:var(--vn);bottom:-10%;left:25%;opacity:.24;animation-delay:-9s}
+.b4{width:280px;height:280px;background:var(--yu);top:8%;left:40%;opacity:.16;animation-delay:-2.5s}
+@keyframes blobmv { 0%,100%{transform:translate(0,0)scale(1)} 33%{transform:translate(24px,-20px)scale(1.05)} 66%{transform:translate(-16px,26px)scale(.96)} }
+.wel-inner { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; width:100% }
+.wel-logo { height:72px; width:auto; object-fit:contain; filter:drop-shadow(0 4px 24px rgba(255,91,29,.28)); margin-bottom:28px }
+.wel-brands { margin-bottom:20px }
+.wel-brands img { height:44px; width:auto; max-width:420px; object-fit:contain; opacity:.88 }
+.wel-chips { display:flex; gap:11px; justify-content:center; flex-wrap:wrap; margin-bottom:0 }
+.wch { padding:9px 22px; border-radius:100px; font-family:var(--fS); font-size:.62rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; animation:flt 4s ease-in-out infinite; backdrop-filter:blur(10px) }
+.wch-yu{background:rgba(255,170,0,.12);border:1.5px solid rgba(255,170,0,.38);color:var(--yu)}
+.wch-dr{background:rgba(122,194,49,.1);border:1.5px solid rgba(122,194,49,.32);color:var(--dr)}
+.wch-br{background:rgba(43,114,255,.1);border:1.5px solid rgba(43,114,255,.32);color:var(--br)}
+.wch-vn{background:rgba(155,69,255,.1);border:1.5px solid rgba(155,69,255,.32);color:var(--vn)}
+.wch:nth-child(2){animation-delay:.7s} .wch:nth-child(3){animation-delay:1.4s} .wch:nth-child(4){animation-delay:2.1s}
+@keyframes flt { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.wel-bottom { position:absolute; bottom:0; left:0; right:0; display:flex; align-items:flex-end;
+  justify-content:space-between; padding:0 48px 72px; z-index:2 }
+.wel-mission { font-family:var(--fG); font-style:italic; font-size:clamp(.78rem,1.2vw,1rem);
+  color:var(--dim); max-width:380px; line-height:1.5; text-align:left; letter-spacing:.01em }
+.weather-card { padding:16px 20px; min-width:240px }
+.wc-city { font-family:var(--fS); font-size:.48rem; letter-spacing:.28em; color:var(--dim); text-transform:uppercase; margin-bottom:10px }
+.wc-now { display:flex; align-items:center; gap:10px; margin-bottom:12px }
+.wc-ic { font-size:2rem }
+.wc-tmp { font-family:var(--fG); font-size:2.4rem; font-weight:700; line-height:1 }
+.wc-desc { font-size:.76rem; color:var(--dimm); margin-top:2px }
+.wc-days { display:flex; gap:8px }
+.wc-day { display:flex; flex-direction:column; align-items:center; gap:3px; padding:7px 10px;
+  background:rgba(255,255,255,.05); border-radius:10px; border:1px solid rgba(255,255,255,.07) }
+.wc-dname { font-family:var(--fS); font-size:.44rem; letter-spacing:.14em; color:var(--dim); text-transform:uppercase }
+.wc-dic { font-size:.9rem }
+.wc-dmax { font-family:var(--fS); font-size:.58rem; font-weight:700; color:var(--text) }
+.wc-dmin { font-family:var(--fS); font-size:.5rem; color:var(--dim) }
+
+/* ─── BOAS-VINDAS ────────────────────────────── */
+.nc-scene { padding:0 !important }
+.nc-bg { position:absolute; inset:0; background:var(--or) }
+.nc-pattern-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; opacity:.1 }
+.nc-prow { font-family:var(--fG); font-weight:800; font-size:5.5rem; white-space:nowrap;
+  letter-spacing:-.04em; line-height:1; color:rgba(0,0,0,.6); animation:scrollrow 22s linear infinite }
+.nc-prow:nth-child(even) { animation-direction:reverse; color:rgba(0,0,0,.4) }
+@keyframes scrollrow { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.nc-content { position:relative; z-index:2; display:flex; gap:0; align-items:stretch;
+  width:100%; height:100%; padding:90px 0 68px }
+.nc-photo-side { width:46%; display:flex; align-items:center; justify-content:center; padding:40px }
+.nc-photo-img { width:100%; height:100%; max-height:78vh; object-fit:cover; object-position:top center;
+  border-radius:28px; box-shadow:0 24px 80px rgba(140,30,0,.45);
+  animation:photofloat 6s ease-in-out infinite }
+.nc-photo-init { width:100%; height:100%; max-height:78vh; border-radius:28px; display:flex;
+  align-items:center; justify-content:center; font-family:var(--fG); font-size:6rem; font-weight:800;
+  color:rgba(255,255,255,.35); background:rgba(200,60,0,.35); border:2px solid rgba(255,255,255,.2) }
+@keyframes photofloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-12px) scale(1.008)} }
+.nc-text-side { flex:1; display:flex; flex-direction:column; justify-content:center; padding:48px 60px 48px 32px }
+.nc-eyebrow { font-family:var(--fS); font-size:.58rem; font-weight:700; letter-spacing:.32em;
+  text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:16px }
+.nc-headline { font-family:var(--fG); font-size:clamp(3.8rem,7vw,7.5rem); font-weight:800;
+  color:white; line-height:.88; letter-spacing:-.05em; margin-bottom:28px }
+.nc-excl { opacity:.55 }
+.nc-name { font-family:var(--fG); font-size:clamp(2.8rem,5vw,5rem); font-weight:800; color:white;
+  letter-spacing:-.04em; line-height:1; margin-bottom:10px }
+.nc-role { font-family:var(--fS); font-size:.6rem; font-weight:500; letter-spacing:.22em;
+  text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:26px }
+.nc-badge { display:inline-flex; align-items:center; gap:8px; padding:8px 20px; border-radius:100px;
+  background:rgba(255,255,255,.2); backdrop-filter:blur(12px); border:1.5px solid rgba(255,255,255,.4);
+  font-family:var(--fS); font-size:.6rem; font-weight:700; letter-spacing:.14em; color:white; text-transform:uppercase }
+.nc-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:white }
+.nc-dots { display:flex; gap:9px; margin-top:28px }
+.ncd { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.3); transition:all .35s }
+.ncd.on { background:white; transform:scale(1.45) }
+
+/* ─── ANIVERSÁRIOS ───────────────────────────── */
+.bday-scene { background:var(--cream); color:#1a0800 }
+.bday-bg { position:absolute; inset:0; overflow:hidden; pointer-events:none }
+.bday-bg svg { width:100%; height:100%; opacity:.06 }
+.bday-inner { position:relative; z-index:2; display:flex; gap:64px; align-items:center;
+  width:100%; max-width:1140px }
+.pol-wrap { flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:12px }
+.polaroid { background:white; padding:12px 12px 64px;
+  box-shadow:0 28px 72px rgba(80,30,0,.18),0 6px 20px rgba(0,0,0,.1);
+  transform:rotate(-2.5deg); animation:polsway 5s ease-in-out infinite }
+@keyframes polsway { 0%,100%{transform:rotate(-2.5deg)} 50%{transform:rotate(-1deg) translateY(-6px)} }
+.pol-stripe { height:5px; display:grid; grid-template-columns:repeat(4,1fr); margin-bottom:12px }
+.pol-stripe div:nth-child(1){background:var(--yu)} .pol-stripe div:nth-child(2){background:var(--dr)}
+.pol-stripe div:nth-child(3){background:var(--br)} .pol-stripe div:nth-child(4){background:var(--vn)}
+.pol-img { width:280px; height:300px; object-fit:cover; object-position:top center; display:block }
+.pol-init { width:280px; height:300px; display:flex; align-items:center; justify-content:center;
+  font-family:var(--fG); font-size:5rem; font-weight:800; color:rgba(255,255,255,.3);
+  background:linear-gradient(135deg,#1e1420,#2d2440) }
+.pol-date { font-family:var(--fS); font-size:.6rem; letter-spacing:.22em; color:#aaa;
+  text-align:center; padding:14px 0 4px; text-transform:uppercase }
+.pol-brand { font-family:var(--fG); font-size:.68rem; color:#ccc; text-align:center }
+.bday-right { flex:1 }
+.bday-eyebrow { font-family:var(--fS); font-size:.58rem; letter-spacing:.3em; color:var(--or);
+  text-transform:uppercase; margin-bottom:14px; opacity:.85 }
+.bday-msg { font-family:var(--fG); font-style:italic; font-size:clamp(2.6rem,4.5vw,4.2rem);
+  font-weight:800; color:var(--or); line-height:1; margin-bottom:14px; letter-spacing:-.04em }
+.bday-name { font-family:var(--fG); font-size:clamp(3.8rem,6.5vw,6.5rem); font-weight:800;
+  letter-spacing:-.06em; line-height:.88; color:#1a0800; margin-bottom:16px }
+.bday-dept { font-family:var(--fS); font-size:.56rem; letter-spacing:.24em; color:#aaa; text-transform:uppercase; margin-bottom:8px }
+.bday-date { font-family:var(--fS); font-size:.8rem; color:#888; margin-bottom:22px }
+.bday-pill { display:inline-block; padding:7px 18px; background:var(--or); color:white;
+  font-family:var(--fS); font-size:.58rem; font-weight:700; letter-spacing:.15em;
+  border-radius:100px; text-transform:uppercase; margin-bottom:22px }
+.bday-dots { display:flex; gap:10px }
+.bdd { width:10px; height:10px; border-radius:50%; background:rgba(26,8,0,.14); transition:all .35s }
+.bdd.on { background:var(--or); transform:scale(1.4) }
+/* Month overview (fallback) */
+.bday-month { display:flex; flex-direction:column; align-items:center; text-align:center; width:100%; max-width:900px }
+.bdm-title { font-family:var(--fG); font-size:clamp(2.2rem,4vw,3.8rem); font-weight:800; color:var(--or);
+  letter-spacing:-.04em; margin-bottom:8px }
+.bdm-sub { font-family:var(--fS); font-size:.56rem; letter-spacing:.28em; color:#bbb;
+  text-transform:uppercase; margin-bottom:36px }
+.bdm-grid { display:flex; flex-wrap:wrap; gap:14px; justify-content:center }
+.bdm-card { padding:18px 22px; background:white; border-radius:18px;
+  box-shadow:0 4px 18px rgba(0,0,0,.08); border:1.5px solid rgba(255,91,29,.1);
+  min-width:160px; text-align:left }
+.bdm-init { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--or),var(--ord));
+  display:flex; align-items:center; justify-content:center; font-family:var(--fG); font-weight:800;
+  font-size:1.1rem; color:white; margin-bottom:10px }
+.bdm-nm { font-family:var(--fG); font-size:1rem; font-weight:700; color:#1a0800; margin-bottom:2px }
+.bdm-dept { font-family:var(--fS); font-size:.5rem; letter-spacing:.18em; color:#bbb; text-transform:uppercase; margin-bottom:4px }
+.bdm-dt { font-family:var(--fS); font-size:.62rem; color:var(--or) }
+
+/* ─── CARDÁPIO ───────────────────────────────── */
+.mn-scene { flex-direction:column; align-items:flex-start; background:var(--dark2) }
+.mn-blobs { position:absolute; inset:0; overflow:hidden; pointer-events:none }
+.mn-b1 { position:absolute; width:480px; height:480px; background:var(--or); bottom:-120px; right:-80px; border-radius:50%; filter:blur(100px); opacity:.16 }
+.mn-b2 { position:absolute; width:300px; height:300px; background:var(--yu); top:-60px; left:-40px; border-radius:50%; filter:blur(80px); opacity:.1 }
+.mn-inner { position:relative; z-index:2; width:100%; max-width:1160px }
+.mn-hd { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px }
+.mn-eye { font-family:var(--fS); font-size:.58rem; letter-spacing:.3em; color:var(--or); text-transform:uppercase; opacity:.85 }
+.mn-title { font-family:var(--fG); font-size:clamp(2.6rem,4.5vw,4rem); font-weight:800; letter-spacing:-.04em; line-height:1 }
+.mn-day-accent { color:var(--or) }
+.mn-chef { font-family:var(--fS); font-size:.52rem; letter-spacing:.2em; color:var(--dim); text-transform:uppercase; margin-bottom:20px }
+.mn-layout { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100% }
+.mn-col { padding:22px 24px; background:rgba(255,255,255,.06); backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.1); border-radius:20px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12) }
+.mn-col-title { font-family:var(--fS); font-size:.54rem; letter-spacing:.28em; color:var(--or);
+  text-transform:uppercase; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid rgba(255,91,29,.14);
+  display:flex; align-items:center; gap:8px }
+.mn-item { display:flex; align-items:center; gap:13px; padding:8px 0; font-size:.92rem;
+  color:rgba(250,244,235,.84); border-bottom:1px solid rgba(255,255,255,.04) }
+.mn-item:last-child { border-bottom:none }
+.mn-em { font-size:1.3rem; width:30px; text-align:center; flex-shrink:0 }
+.mn-week-strip { display:flex; gap:10px; margin-top:14px; width:100% }
+.mn-day-mini { flex:1; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.04); transition:all .3s }
+.mn-day-mini.today { background:rgba(255,91,29,.12); border-color:rgba(255,91,29,.28) }
+.mn-dm-name { font-family:var(--fS); font-size:.46rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--dim); margin-bottom:6px }
+.mn-day-mini.today .mn-dm-name { color:var(--or) }
+.mn-dm-main { font-size:.72rem; color:var(--dimm); line-height:1.4 }
+.mn-notice { display:flex; align-items:center; gap:10px; margin-top:12px; padding:10px 16px;
+  background:rgba(255,170,0,.08); border:1px solid rgba(255,170,0,.2); border-radius:12px;
+  font-size:.75rem; color:rgba(250,244,235,.6) }
+.mn-notice-ic { font-size:1rem; flex-shrink:0 }
+
+/* ─── EVENTOS ────────────────────────────────── */
+.ev-scene { flex-direction:column; align-items:flex-start }
+.ev-bg-blob { position:absolute; width:520px; height:520px; border-radius:50%; filter:blur(110px);
+  top:-80px; right:-100px; background:var(--vn); opacity:.14; pointer-events:none }
+.ev-inner { position:relative; z-index:2; width:100%; max-width:1080px }
+.ev-eye { font-family:var(--fS); font-size:.58rem; letter-spacing:.3em; color:var(--vn);
+  text-transform:uppercase; margin-bottom:6px }
+.ev-title { font-family:var(--fG); font-size:clamp(2.4rem,4vw,3.6rem); font-weight:800;
+  letter-spacing:-.04em; margin-bottom:24px }
+.ev-title span { color:var(--or) }
+.ev-list { display:flex; flex-direction:column; gap:10px; width:100% }
+.ev-card { display:flex; align-items:flex-start; gap:18px; padding:16px 20px; border-radius:18px;
+  background:rgba(255,255,255,.06); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12); transition:all .3s }
+.ev-card.soon { border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.09) }
+.ev-ic-box { width:52px; height:52px; border-radius:14px; display:flex; align-items:center;
+  justify-content:center; font-size:1.6rem; flex-shrink:0; background:rgba(255,255,255,.08) }
+.ev-info { flex:1 }
+.ev-meta { display:flex; align-items:center; gap:8px; margin-bottom:5px }
+.ev-date-tag { font-family:var(--fS); font-size:.5rem; font-weight:700; letter-spacing:.18em;
+  padding:3px 10px; border-radius:100px; text-transform:uppercase }
+.ev-type-tag { font-family:var(--fS); font-size:.46rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--dim); padding:3px 8px; background:rgba(255,255,255,.05); border-radius:100px;
+  border:1px solid rgba(255,255,255,.08) }
+.ev-name { font-family:var(--fG); font-size:1.15rem; font-weight:700; margin-bottom:3px; letter-spacing:-.02em }
+.ev-desc { font-size:.8rem; color:var(--dim); line-height:1.5 }
+.ev-time { font-family:var(--fS); font-size:.62rem; font-weight:700; color:var(--dimm); flex-shrink:0;
+  white-space:nowrap; align-self:center }
+
+/* ─── NOTÍCIAS ───────────────────────────────── */
+.nws-scene { flex-direction:row; align-items:center; gap:0; padding:90px 0 68px }
+.nws-left { flex:1; padding:0 48px; display:flex; flex-direction:column; justify-content:center }
+.nws-right { width:38%; height:100%; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; flex-shrink:0 }
+.nws-right-inner { width:100%; height:100%; position:relative; display:flex; align-items:center; justify-content:center }
+.nws-right-bg { position:absolute; inset:0; opacity:.18; transition:background .5s }
+.nws-right-glow { position:absolute; width:320px; height:320px; border-radius:50%;
+  filter:blur(60px); opacity:.55; animation:glowpulse 3s ease-in-out infinite }
+@keyframes glowpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.nws-big-ic { font-size:10rem; position:relative; z-index:2; animation:icfloat 4s ease-in-out infinite;
+  filter:drop-shadow(0 8px 32px rgba(0,0,0,.4)) }
+@keyframes icfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.nws-num { position:absolute; bottom:80px; right:24px; font-family:var(--fG); font-size:4.5rem;
+  font-weight:800; opacity:.1; letter-spacing:-.04em; line-height:1; z-index:1; pointer-events:none }
+.nws-src-badge { position:absolute; bottom:80px; left:24px; padding:6px 14px;
+  background:rgba(0,0,0,.4); backdrop-filter:blur(12px); border-radius:100px;
+  font-family:var(--fS); font-size:.5rem; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.6); z-index:2; border:1px solid rgba(255,255,255,.1) }
+.nws-eye { font-family:var(--fS); font-size:.58rem; letter-spacing:.26em; text-transform:uppercase;
+  margin-bottom:20px; opacity:.5 }
+.nws-cat { display:inline-block; padding:5px 16px; border-radius:100px; font-family:var(--fS);
+  font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:16px }
+.nws-title { font-family:var(--fG); font-size:clamp(1.9rem,3.4vw,3.2rem); font-weight:800;
+  line-height:1.1; letter-spacing:-.04em; max-width:720px; margin-bottom:16px }
+.nws-body { font-size:.95rem; line-height:1.8; color:var(--dim); max-width:560px; margin-bottom:18px }
+.nws-tag { display:inline-block; padding:5px 14px; border-radius:100px; font-family:var(--fS);
+  font-size:.54rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:28px }
+.nws-prg { display:flex; gap:8px; max-width:560px }
+.nws-seg { height:3px; border-radius:2px; flex:1; background:rgba(255,255,255,.08); overflow:hidden }
+.nws-fill { position:absolute; inset-y:0; left:0; border-radius:2px; transition:width .1s linear }
+
+/* ─── FOOTER ─────────────────────────────────── */
+.ftr { position:fixed; bottom:0; left:0; right:0; z-index:200; height:64px;
+  display:flex; align-items:center; padding:0 48px; gap:20px;
+  background:rgba(13,5,0,.92); backdrop-filter:blur(28px) saturate(160%);
+  border-top:1px solid rgba(255,91,29,.1) }
+.si-row { display:flex; gap:7px; flex-shrink:0 }
+.si { width:22px; height:3px; border-radius:2px; background:rgba(250,244,235,.1); transition:all .4s }
+.si.on { background:var(--or) }
+.tkr { flex:1; overflow:hidden; white-space:nowrap; position:relative }
+.tkr::before, .tkr::after { content:''; position:absolute; top:0; bottom:0; width:40px; z-index:1 }
+.tkr::before { left:0; background:linear-gradient(to right,rgba(13,5,0,.9),transparent) }
+.tkr::after { right:0; background:linear-gradient(to left,rgba(13,5,0,.9),transparent) }
+.tkr-t { display:inline-flex; align-items:center; gap:0; animation:tksc 50s linear infinite;
+  font-family:var(--fS); font-size:.62rem; letter-spacing:.06em; white-space:nowrap }
+@keyframes tksc { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+.tk-item { display:inline-flex; align-items:center; gap:8px; padding:0 28px }
+.tk-sep { display:inline-block; width:4px; height:4px; border-radius:50%; opacity:.4; flex-shrink:0 }
+.tk-cat { font-weight:700; text-transform:uppercase; font-size:.5rem; letter-spacing:.18em; opacity:.6 }
+.tk-dot { opacity:.5 }
+.tk-ttl { color:rgba(250,244,235,.8) }
+.tk-src { opacity:.45; font-size:.5rem }
+.prow { display:flex; align-items:center; gap:10px; flex-shrink:0 }
+.pbar { width:96px; height:2px; background:rgba(255,255,255,.08); border-radius:1px; overflow:hidden }
+.pfill { height:100%; background:var(--or); border-radius:1px; width:0%; transition:width .12s linear }
+.plbl { font-family:var(--fS); font-size:.48rem; color:var(--dim); letter-spacing:.18em;
+  text-transform:uppercase; min-width:90px; text-align:right }
+
+/* ─── MUSIC PANEL ────────────────────────────── */
+.mp { position:fixed; bottom:0; left:0; right:0; z-index:300;
+  background:rgba(10,4,0,.97); backdrop-filter:blur(36px) saturate(180%);
+  border-top:1px solid rgba(255,91,29,.18); padding:26px 48px;
+  transform:translateY(100%); transition:transform .55s var(--ease) }
+.mp.open { transform:translateY(0) }
+.mp-hd { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px }
+.mp-tt { font-family:var(--fG); font-size:1.4rem; font-weight:700 }
+.mp-x { cursor:pointer; width:30px; height:30px; border-radius:50%; border:1px solid rgba(255,255,255,.1);
+  display:flex; align-items:center; justify-content:center; color:var(--dim); font-size:.8rem; transition:all .25s }
+.mp-x:hover { background:rgba(255,255,255,.06); color:var(--text) }
+.stns { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:18px }
+.stn { padding:13px 10px; border:1px solid rgba(255,255,255,.06); border-radius:14px;
+  cursor:pointer; text-align:center; background:rgba(255,255,255,.03); transition:all .3s var(--ease) }
+.stn:hover { background:var(--orb); border-color:rgba(255,91,29,.3); transform:translateY(-3px) }
+.stn.on { background:var(--orb); border-color:rgba(255,91,29,.48) }
+.stn-ic { font-size:1.4rem; margin-bottom:6px }
+.stn-nm { font-family:var(--fS); font-size:.52rem; font-weight:700; color:var(--text); margin-bottom:2px }
+.stn-gn { font-size:.56rem; color:var(--dim) }
+.mp-ct { display:flex; align-items:center; gap:15px; min-height:48px }
+.pp { width:42px; height:42px; border-radius:50%; background:var(--or); display:flex; align-items:center;
+  justify-content:center; cursor:pointer; font-size:.9rem; color:white; border:none; outline:none;
+  transition:transform .2s; flex-shrink:0 }
+.pp:hover { transform:scale(1.1) }
+.np-info { flex:1 }
+.np-nm { font-family:var(--fG); font-size:1rem; font-weight:700 }
+.np-gn { font-size:.72rem; color:var(--dim); margin-top:2px }
+.vw { display:flex; align-items:center; gap:10px }
+input[type=range].vsl { -webkit-appearance:none; width:100px; height:3px;
+  background:rgba(255,255,255,.1); border-radius:2px; outline:none; cursor:pointer }
+input[type=range].vsl::-webkit-slider-thumb { -webkit-appearance:none; width:13px; height:13px;
+  border-radius:50%; background:var(--or); cursor:pointer; transition:transform .2s }
+input[type=range].vsl::-webkit-slider-thumb:hover { transform:scale(1.2) }
+.mp-idle { color:var(--dim); font-size:.84rem; font-style:italic }
+
+/* ─── CONFETTI ───────────────────────────────── */
+.cpc { position:fixed; pointer-events:none; z-index:998; border-radius:2px;
+  animation:cfall var(--d) var(--dl) linear both }
+@keyframes cfall { 0%{transform:translateY(-60px) rotate(0deg);opacity:1} 100%{transform:translateY(105vh) rotate(720deg);opacity:0} }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="bstrip"><div class="bs-yu"></div><div class="bs-dr"></div><div class="bs-br"></div><div class="bs-vn"></div></div>
+
+<header class="hdr">
+  <div class="logo-wrap">
+    <img class="logo-img" src="assets/logos/tgroup_white.png" alt="t.group" onerror="this.style.display='none'">
+    <div class="logo-div"></div>
+    <div>
+      <div class="logo-txt">T<span class="logo-dot">.</span>News</div>
+      <div class="logo-sub">Canal Interno</div>
+    </div>
+  </div>
+  <div class="clk">
+    <div class="clk-t" id="clkT">00:00</div>
+    <div class="clk-d" id="clkD">Quarta, 15 de Abril</div>
+  </div>
+  <button class="mbtn" id="mbtn" onclick="toggleMP()">
+    <div class="ld" id="ld"></div>
+    <span id="mbtnTxt">♩ Música</span>
+  </button>
+</header>
+
+<main class="main">
+  <div id="sw">
+    <div id="sc"></div>
+  </div>
+</main>
+
+<footer class="ftr">
+  <div class="si-row" id="siRow"></div>
+  <div class="tkr"><div class="tkr-t" id="tkrT"></div></div>
+  <div class="prow">
+    <div class="pbar"><div class="pfill" id="pfill"></div></div>
+    <div class="plbl" id="plbl">WELCOME</div>
+  </div>
+</footer>
+
+<div class="mp" id="mpPanel">
+  <div class="mp-hd">
+    <div class="mp-tt">♩ Central de Música</div>
+    <div class="mp-x" onclick="toggleMP()">✕</div>
+  </div>
+  <div class="stns" id="stns"></div>
+  <div class="mp-ct" id="mpCtrl"><div class="mp-idle">Selecione uma estação acima para começar.</div></div>
+</div>
+
+<audio id="aud" preload="none"></audio>
+
+<!-- ══ DATA ══ -->
+<script src="data.js"></script>
+
+<script>
+// ─────────────────────────────────────────────
+//  CONSTANTS
+// ─────────────────────────────────────────────
+const D = window.TNEWS;
+const DAYS   = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
+                'Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const SC_DUR = 20000; // ms per scene
+const NC_DUR = 6000;
+const BD_DUR = 5000;
+const NW_DUR = 7000;
+
+const STNS = [
+  {id:'groove', nm:'Groove Salad', gn:'Ambient / Chill',      url:'https://ice1.somafm.com/groovesalad-128-mp3', ic:'🌿'},
+  {id:'lush',   nm:'Lush',        gn:'Indie Pop Suave',       url:'https://ice1.somafm.com/lush-128-mp3',       ic:'🌸'},
+  {id:'fluid',  nm:'Fluid',       gn:'Adult Contemporary',    url:'https://ice1.somafm.com/fluid-128-mp3',      ic:'💧'},
+  {id:'indie',  nm:'Indie Pop',   gn:'Indie Alternativo',     url:'https://ice1.somafm.com/indiepop-128-mp3',   ic:'🎸'},
+  {id:'bagel',  nm:'BAGeL Radio', gn:'Alternative Rock',      url:'https://ice1.somafm.com/bagel-128-mp3',      ic:'🎵'},
+  {id:'deep',   nm:'Deep Space',  gn:'Space Ambient',         url:'https://ice1.somafm.com/deepspaceone-128-mp3',ic:'🌌'},
+];
+
+const FOOD_EM = {
+  'arroz':'🍚','feijão':'🫘','feijao':'🫘','frango':'🍗','bife':'🥩','bovino':'🥩',
+  'farofa':'🌾','purê':'🥣','pure':'🥣','creme':'🥣','strogonoff':'🍲',
+  'batata':'🥔','alface':'🥬','tomate':'🍅','cenoura':'🥕','pepino':'🥒',
+  'manga':'🥭','ovo':'🥚','ovos':'🥚','palmito':'🌿','beterraba':'❤️',
+  'milho':'🌽','abóbora':'🎃','abobora':'🎃','cebola':'🧅','salada':'🥗',
+};
+function fe(item){
+  const l=item.toLowerCase();
+  for(const[k,v]of Object.entries(FOOD_EM))if(l.includes(k))return v;
+  return '🍴';
+}
+
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+const state = {
+  scIdx: 0, ncIdx: 0, bdIdx: 0, nwIdx: 0,
+  scenes: [],
+  scStart: Date.now(), nwPrStart: Date.now(),
+  music: { playing: false, station: null },
+  weather: null,
+  timers: {},
+};
+
+const aud = document.getElementById('aud');
+const sw  = document.getElementById('sw');
+
+// ─────────────────────────────────────────────
+//  SCENE LIST (dynamic)
+// ─────────────────────────────────────────────
+function buildScenes() {
+  const s = ['welcome'];
+  if (D.newcomers && D.newcomers.length) s.push('newcomers');
+  if (D.birthdays && D.birthdays.length) s.push('birthday');
+  s.push('menu');
+  if (D.events && D.events.length) s.push('events');
+  s.push('news');
+  return s;
+}
+
+const SC_LABELS = {
+  welcome:'WELCOME', newcomers:'BOAS-VINDAS', birthday:'ANIVERSÁRIOS',
+  menu:'CARDÁPIO', events:'AGENDA', news:'T.NEWS'
+};
+
+// ─────────────────────────────────────────────
+//  CLOCK
+// ─────────────────────────────────────────────
+function tick() {
+  const n = new Date();
+  document.getElementById('clkT').textContent =
+    String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+  document.getElementById('clkD').textContent =
+    DAYS[n.getDay()] + ', ' + n.getDate() + ' de ' + MONTHS[n.getMonth()];
+}
+setInterval(tick, 1000); tick();
+
+function todayDayName() { return DAYS[new Date().getDay()]; }
+function isToday(day, month) {
+  const n = new Date();
+  return n.getDate() === day && (n.getMonth()+1) === month;
+}
+
+// ─────────────────────────────────────────────
+//  WEATHER
+// ─────────────────────────────────────────────
+const WC = {
+  0:{ic:'☀️',lb:'Ensolarado'}, 1:{ic:'🌤',lb:'Poucas nuvens'}, 2:{ic:'⛅',lb:'Parcialmente nublado'},
+  3:{ic:'☁️',lb:'Nublado'}, 45:{ic:'🌫',lb:'Neblina'}, 48:{ic:'🌫',lb:'Neblina'},
+  51:{ic:'🌦',lb:'Garoa leve'}, 53:{ic:'🌦',lb:'Garoa'}, 55:{ic:'🌧',lb:'Garoa forte'},
+  61:{ic:'🌧',lb:'Chuva leve'}, 63:{ic:'🌧',lb:'Chuva'}, 65:{ic:'🌧',lb:'Chuva forte'},
+  80:{ic:'🌦',lb:'Pancadas'}, 81:{ic:'🌦',lb:'Pancadas'}, 82:{ic:'⛈',lb:'Pancadas fortes'},
+  95:{ic:'⛈',lb:'Tempestade'}, 99:{ic:'⛈',lb:'Tempestade'},
+};
+function wIcon(code) { return WC[code] || {ic:'🌡',lb:'--'}; }
+function wLabel(code) { return (WC[code]||{lb:'--'}).lb; }
+
+async function loadWeather() {
+  try {
+    const r = await fetch(
+      'https://api.open-meteo.com/v1/forecast?latitude=-23.5505&longitude=-46.6333' +
+      '&current=temperature_2m,weather_code' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min' +
+      '&timezone=America/Sao_Paulo&forecast_days=4'
+    );
+    const d = await r.json();
+    state.weather = d;
+  } catch(e) { /* offline — will show '--' */ }
+}
+
+function renderWeatherCard() {
+  if (!state.weather) return `<div class="glass weather-card s6"><div class="wc-city">São Paulo, SP</div><div class="wc-now"><span class="wc-ic">🌡</span><span class="wc-tmp">--°</span></div></div>`;
+  const cur = state.weather.current;
+  const daily = state.weather.daily;
+  const wi = wIcon(cur.weather_code);
+  const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const futureDays = [1,2,3].map(i => {
+    const d2 = new Date(); d2.setDate(d2.getDate()+i);
+    const wdi = wIcon(daily.weather_code[i]);
+    return `<div class="wc-day">
+      <div class="wc-dname">${dayNames[d2.getDay()]}</div>
+      <div class="wc-dic">${wdi.ic}</div>
+      <div class="wc-dmax">${Math.round(daily.temperature_2m_max[i])}°</div>
+      <div class="wc-dmin">${Math.round(daily.temperature_2m_min[i])}°</div>
+    </div>`;
+  }).join('');
+  return `<div class="glass weather-card s6">
+    <div class="wc-city">São Paulo, SP</div>
+    <div class="wc-now">
+      <span class="wc-ic">${wi.ic}</span>
+      <div><div class="wc-tmp">${Math.round(cur.temperature_2m)}°C</div>
+      <div class="wc-desc">${wi.lb}</div></div>
+    </div>
+    <div class="wc-days">${futureDays}</div>
+  </div>`;
+}
+
+// ─────────────────────────────────────────────
+//  TICKER
+// ─────────────────────────────────────────────
+function buildTicker() {
+  if (!D.news || !D.news.length) return '';
+  const items = [...D.news, ...D.news].map(n =>
+    `<span class="tk-item">
+      <span class="tk-sep" style="background:${n.ac}"></span>
+      <span class="tk-cat" style="color:${n.ac}">${n.cat}</span>
+      <span class="tk-dot">·</span>
+      <span class="tk-ttl">${n.ttl}</span>
+      <span class="tk-dot">—</span>
+      <span class="tk-src">${n.src||''}</span>
+    </span>`
+  ).join('');
+  return items;
+}
+
+// ─────────────────────────────────────────────
+//  SCENE RENDERERS
+// ─────────────────────────────────────────────
+
+function rWelcome() {
+  const brandsHTML = `<div class="wel-brands"><img src="assets/logos/logos_subbrands.png" alt="T.Group Companies" onerror="this.style.display='none'"></div>`;
+  return `<div class="scene wel">
+  <div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+  <div class="wel-inner">
+    <img class="wel-logo s1" src="assets/logos/tgroup_offwhite.png" alt="t.group" onerror="this.style.display='none'">
+    <div class="s2">${brandsHTML}</div>
+    <div class="wel-chips s3">
+      <div class="wch wch-yu">T.Youth</div>
+      <div class="wch wch-dr">T.Dreams</div>
+      <div class="wch wch-br">T.Brands</div>
+      <div class="wch wch-vn">T.Venues</div>
+    </div>
+  </div>
+  <div class="wel-bottom">
+    <div class="wel-mission s4">"${D.missao}"</div>
+    ${renderWeatherCard()}
+  </div>
+</div>`;
+}
+
+function rNewcomers() {
+  const p = D.newcomers[state.ncIdx];
+  const msg = p.genero === 'f' ? 'bem-<br>vinda<span class="nc-excl">!</span>' : 'bem-<br>vindo<span class="nc-excl">!</span>';
+  const lines = Array(14).fill(null).map(() =>
+    `<div class="nc-prow">bem-vindo! bem-vinda! bem-vindo! bem-vinda! bem-vindo! bem-vinda! bem-vindo! bem-vinda!</div>`
+  ).join('');
+  const photoContent = p.photo
+    ? `<img class="nc-photo-img" src="${p.photo}" alt="${p.name}" onerror="this.parentNode.innerHTML='<div class=nc-photo-init>${(p.name||'').split(' ').map(w=>w[0]).join('').slice(0,2)}</div>'">`
+    : `<div class="nc-photo-init">${(p.name||'').split(' ').map(w=>w[0]).join('').slice(0,2)}</div>`;
+  return `<div class="scene nc-scene">
+  <div class="nc-bg"></div>
+  <div class="nc-pattern-wrap">${lines}</div>
+  <div class="nc-content">
+    <div class="nc-photo-side s2">${photoContent}</div>
+    <div class="nc-text-side">
+      <div class="nc-eyebrow s1">Novo Colaborador · ${D.mes} ${D.ano}</div>
+      <div class="nc-headline s2">${msg}</div>
+      <div class="nc-name s3">${p.name}</div>
+      <div class="nc-role s4">${p.role} &nbsp;·&nbsp; ${p.dept}</div>
+      <div class="s4"><div class="nc-badge">${p.dept}</div></div>
+      ${D.newcomers.length > 1 ? `<div class="nc-dots s5">${D.newcomers.map((_,i)=>`<div class="ncd${i===state.ncIdx?' on':''}"></div>`).join('')}</div>` : ''}
+    </div>
+  </div>
+</div>`;
+}
+
+function rBirthday() {
+  const today = D.birthdays.filter(b => isToday(b.day, b.month));
+  const showBirthday = today.length > 0 ? today[state.bdIdx % today.length] : D.birthdays[state.bdIdx];
+  const p = showBirthday;
+  const isB = isToday(p.day, p.month);
+
+  const photoContent = p.photo
+    ? `<img class="pol-img" src="${p.photo}" alt="${p.name}" onerror="this.parentNode.innerHTML='<div class=pol-init>${(p.firstname||'').slice(0,2).toUpperCase()}</div>'">`
+    : `<div class="pol-init">${(p.firstname||'??').slice(0,2).toUpperCase()}</div>`;
+
+  // Month overview sidebar
+  const overview = D.birthdays.map((b,i) => `
+    <div class="bdd${i===state.bdIdx?' on':''}"></div>`).join('');
+
+  return `<div class="scene bday-scene">
+  <div class="bday-bg"><svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    ${Array.from({length:14},(_,i)=>`<ellipse cx="${280+i*100}" cy="540" rx="${55+i*15}" ry="${460+i*10}" fill="none" stroke="#8B5E3C" stroke-width=".8"/>`).join('')}
+  </svg></div>
+  <div class="bday-inner">
+    <div class="pol-wrap s2">
+      <div class="polaroid">
+        <div class="pol-stripe"><div></div><div></div><div></div><div></div></div>
+        ${photoContent}
+        <div class="pol-date">${p.date}</div>
+        <div class="pol-brand">t.group</div>
+      </div>
+    </div>
+    <div class="bday-right">
+      <div class="bday-eyebrow s1">Aniversariantes de ${D.mes}</div>
+      <div class="bday-msg s2">feliz<br>aniversário!</div>
+      <div class="bday-name s3">${p.firstname}</div>
+      <div class="bday-dept s4">${p.dept}</div>
+      <div class="bday-date s4">${p.date}</div>
+      ${isB ? '<div class="bday-pill s4">🎉 Hoje é o seu dia!</div>' : ''}
+      <div class="bday-dots s5">${overview}</div>
+    </div>
+  </div>
+</div>`;
+}
+
+function rMenu() {
+  const day = todayDayName();
+  const m = D.menu[day] || D.menu['Quarta'] || { main:[], salad:[] };
+  const allDays = ['Segunda','Terça','Quarta','Quinta','Sexta'];
+
+  const miniDays = allDays.map(d => {
+    const dm = D.menu[d];
+    if (!dm) return '';
+    const isToday2 = d === day;
+    const mainItems = dm.main.slice(0,2).join(', ');
+    return `<div class="mn-day-mini${isToday2?' today':''}">
+      <div class="mn-dm-name">${d}</div>
+      <div class="mn-dm-main">${mainItems}${dm.main.length>2?'...':''}</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="scene mn-scene">
+  <div class="mn-blobs"><div class="mn-b1"></div><div class="mn-b2"></div></div>
+  <div class="mn-inner">
+    <div class="mn-hd s1">
+      <div class="mn-eye">Refeitório T.Group</div>
+    </div>
+    <div class="mn-title s2">Cardápio de <span class="mn-day-accent">${day}</span></div>
+    <div class="mn-chef s2">Chef Adriana &nbsp;·&nbsp; Almoço 12h – 14h</div>
+    <div class="mn-layout s3">
+      <div class="mn-col">
+        <div class="mn-col-title">🍽️&nbsp; Prato Principal</div>
+        ${m.main.map(x=>`<div class="mn-item"><span class="mn-em">${fe(x)}</span>${x}</div>`).join('')}
+      </div>
+      <div class="mn-col">
+        <div class="mn-col-title">🥗&nbsp; Saladas &amp; Guarnições</div>
+        ${m.salad.map(x=>`<div class="mn-item"><span class="mn-em">${fe(x)}</span>${x}</div>`).join('')}
+      </div>
+    </div>
+    <div class="mn-week-strip s4">${miniDays}</div>
+    <div class="mn-notice s5">
+      <span class="mn-notice-ic">⚠️</span>
+      <span>Colaboradores com restrições alimentares, comuniquem à equipe de <strong>Facilities</strong> imediatamente.</span>
+    </div>
+  </div>
+</div>`;
+}
+
+function rEvents() {
+  const now = new Date();
+  const sorted = [...D.events].sort((a,b) => {
+    const da = new Date(a.year, a.month-1, a.day);
+    const db = new Date(b.year, b.month-1, b.day);
+    return da - db;
+  });
+  const cards = sorted.map(e => {
+    const eDate = new Date(e.year, e.month-1, e.day);
+    const isPast = eDate < new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const isSoon = !isPast && eDate - now < 4 * 24 * 60 * 60 * 1000;
+    const dayName = DAYS[eDate.getDay()];
+    const typeLabel = e.type === 'gc' ? 'Gente & Cultura' : (e.company || 'T.Group');
+    return `<div class="ev-card${isSoon?' soon':''}" style="opacity:${isPast?.45:1}">
+      <div class="ev-ic-box" style="background:${e.color}22;border:1px solid ${e.color}44">${e.ic}</div>
+      <div class="ev-info">
+        <div class="ev-meta">
+          <span class="ev-date-tag" style="background:${e.color}22;color:${e.color};border:1px solid ${e.color}44">${e.day.toString().padStart(2,'0')}/${e.month.toString().padStart(2,'0')} · ${dayName}</span>
+          <span class="ev-type-tag">${typeLabel}</span>
+          ${isSoon?`<span class="ev-type-tag" style="color:${e.color};border-color:${e.color}44">Em breve</span>`:''}
+        </div>
+        <div class="ev-name">${e.title}</div>
+        <div class="ev-desc">${e.desc}</div>
+      </div>
+      <div class="ev-time">${e.time}</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="scene ev-scene">
+  <div class="ev-bg-blob"></div>
+  <div class="ev-inner">
+    <div class="ev-eye s1">Agenda</div>
+    <div class="ev-title s2">${D.mes} <span>${D.ano}</span></div>
+    <div class="ev-list s3">${cards}</div>
+  </div>
+</div>`;
+}
+
+function rNews() {
+  const n = D.news[state.nwIdx];
+  return `<div class="scene nws-scene">
+  <div class="nws-left">
+    <div class="nws-eye s1" style="color:${n.ac}">T.News &nbsp;·&nbsp; Entretenimento &amp; Cultura</div>
+    <div class="nws-cat s2" style="background:${n.ac}1a;color:${n.ac};border:1.5px solid ${n.ac}50">${n.cat}</div>
+    <div class="nws-title s3">${n.ttl}</div>
+    <div class="nws-body s4">${n.body}</div>
+    <div class="s4"><span class="nws-tag" style="background:${n.ac}18;color:${n.ac};border:1px solid ${n.ac}38">#${n.tag}</span></div>
+    <div class="nws-prg s5">${D.news.map((x,i)=>`<div class="nws-seg" style="position:relative"><div class="nws-fill" id="nf${i}" style="background:${x.ac};width:${i<state.nwIdx?'100%':'0%'}"></div></div>`).join('')}</div>
+  </div>
+  <div class="nws-right">
+    <div class="nws-right-inner">
+      <div class="nws-right-bg" style="background:${n.ac}"></div>
+      <div class="nws-right-glow" style="background:${n.ac}"></div>
+      <div class="nws-big-ic">${n.ic}</div>
+      <div class="nws-num">${String(state.nwIdx+1).padStart(2,'0')}<br><span style="font-size:2.5rem;opacity:.6">/ ${D.news.length}</span></div>
+      <div class="nws-src-badge">${n.src||''}</div>
+    </div>
+  </div>
+</div>`;
+}
+
+// ─────────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────────
+function renderScene() {
+  const sn = state.scenes[state.scIdx];
+  document.getElementById('plbl').textContent = SC_LABELS[sn] || sn.toUpperCase();
+  const map = { welcome:rWelcome, newcomers:rNewcomers, birthday:rBirthday, menu:rMenu, events:rEvents, news:rNews };
+  document.getElementById('sc').innerHTML = (map[sn] || rWelcome)();
+  document.getElementById('siRow').innerHTML = state.scenes.map((_,i) =>
+    `<div class="si${i===state.scIdx?' on':''}"></div>`).join('');
+  document.getElementById('tkrT').innerHTML = buildTicker();
+  if (sn === 'news') startNwPr();
+  if (sn === 'birthday' && D.birthdays.some(b => isToday(b.day, b.month))) launchConfetti();
+}
+
+// ─────────────────────────────────────────────
+//  PROGRESS BAR
+// ─────────────────────────────────────────────
+function startPr() {
+  state.scStart = Date.now();
+  clearInterval(state.timers.pr);
+  state.timers.pr = setInterval(() => {
+    const p = Math.min((Date.now() - state.scStart) / SC_DUR * 100, 100);
+    const el = document.getElementById('pfill');
+    if (el) el.style.width = p + '%';
+  }, 120);
+}
+
+function startNwPr() {
+  state.nwPrStart = Date.now();
+  clearInterval(state.timers.nwPr);
+  state.timers.nwPr = setInterval(() => {
+    if (state.scenes[state.scIdx] !== 'news') return;
+    const p = Math.min((Date.now() - state.nwPrStart) / NW_DUR * 100, 100);
+    const el = document.getElementById('nf' + state.nwIdx);
+    if (el) el.style.width = p + '%';
+  }, 80);
+}
+
+// ─────────────────────────────────────────────
+//  CINEMATIC TRANSITION
+// ─────────────────────────────────────────────
+function transition(updateFn) {
+  sw.classList.remove('in'); sw.classList.add('out');
+  setTimeout(() => {
+    updateFn();
+    sw.classList.remove('out'); sw.classList.add('in-start');
+    sw.offsetHeight; // reflow
+    sw.classList.remove('in-start'); sw.classList.add('in');
+    setTimeout(() => sw.classList.remove('in'), 700);
+    startPr(); sched();
+  }, 560);
+}
+
+function goNext() {
+  transition(() => {
+    state.scIdx = (state.scIdx + 1) % state.scenes.length;
+    const sn = state.scenes[state.scIdx];
+    if (sn === 'news')     state.nwIdx = 0;
+    if (sn === 'newcomers') state.ncIdx = 0;
+    if (sn === 'birthday') state.bdIdx = 0;
+    renderScene();
+  });
+}
+
+function sched() {
+  clearTimeout(state.timers.sc);
+  state.timers.sc = setTimeout(goNext, SC_DUR);
+}
+
+// Sub-scene crossfade
+function subFade(updateFn) {
+  const el = document.getElementById('sc');
+  el.style.cssText = 'transition:opacity .3s ease,transform .3s ease;opacity:0;transform:translateY(-10px)';
+  setTimeout(() => {
+    updateFn();
+    el.style.cssText = 'transition:none;opacity:0;transform:translateY(14px)';
+    el.offsetHeight;
+    el.style.cssText = 'transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);opacity:1;transform:none';
+  }, 310);
+}
+
+// ─────────────────────────────────────────────
+//  SUB-CAROUSELS
+// ─────────────────────────────────────────────
+function startNC() {
+  clearInterval(state.timers.nc);
+  state.timers.nc = setInterval(() => {
+    if (state.scenes[state.scIdx] !== 'newcomers') return;
+    state.ncIdx = (state.ncIdx + 1) % D.newcomers.length;
+    subFade(renderScene);
+  }, NC_DUR);
+}
+
+function startBD() {
+  clearInterval(state.timers.bd);
+  state.timers.bd = setInterval(() => {
+    if (state.scenes[state.scIdx] !== 'birthday') return;
+    state.bdIdx = (state.bdIdx + 1) % D.birthdays.length;
+    subFade(renderScene);
+    if (D.birthdays[state.bdIdx] && isToday(D.birthdays[state.bdIdx].day, D.birthdays[state.bdIdx].month))
+      setTimeout(launchConfetti, 300);
+  }, BD_DUR);
+}
+
+function startNW() {
+  clearInterval(state.timers.nw);
+  state.timers.nw = setInterval(() => {
+    if (state.scenes[state.scIdx] !== 'news') return;
+    state.nwIdx = (state.nwIdx + 1) % D.news.length;
+    subFade(() => { renderScene(); state.nwPrStart = Date.now(); });
+  }, NW_DUR);
+}
+
+// ─────────────────────────────────────────────
+//  MUSIC
+// ─────────────────────────────────────────────
+function toggleMP() {
+  const p = document.getElementById('mpPanel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) { renderStns(); updCtrl(); }
+}
+function renderStns() {
+  document.getElementById('stns').innerHTML = STNS.map(s =>
+    `<div class="stn${state.music.station&&state.music.station.id===s.id?' on':''}" onclick="pickStn('${s.id}')">
+      <div class="stn-ic">${s.ic}</div><div class="stn-nm">${s.nm}</div><div class="stn-gn">${s.gn}</div>
+    </div>`
+  ).join('');
+}
+function pickStn(id) {
+  const stn = STNS.find(s => s.id === id);
+  if (!stn) return;
+  state.music.station = stn;
+  aud.src = stn.url; aud.volume = .42;
+  aud.play().then(() => { state.music.playing = true; updPlay(); }).catch(() => { state.music.playing = false; updPlay(); });
+  renderStns(); updCtrl();
+  setTimeout(toggleMP, 1500);
+}
+function updCtrl() {
+  if (!state.music.station) {
+    document.getElementById('mpCtrl').innerHTML = '<div class="mp-idle">Selecione uma estação acima para começar.</div>';
+    return;
+  }
+  const s = state.music.station;
+  document.getElementById('mpCtrl').innerHTML = `
+    <button class="pp" id="ppBtn" onclick="togPlay()">${state.music.playing?'⏸':'▶'}</button>
+    <div class="np-info"><div class="np-nm">${s.ic} ${s.nm}</div><div class="np-gn">${s.gn}</div></div>
+    <div class="vw"><span style="font-size:.85rem;color:var(--dim)">🔊</span>
+    <input type="range" class="vsl" min="0" max="1" step="0.05" value="${aud.volume.toFixed(2)}" oninput="aud.volume=+this.value"></div>`;
+}
+function togPlay() {
+  if (!state.music.station) return;
+  if (state.music.playing) { aud.pause(); state.music.playing = false; }
+  else { aud.play().then(() => { state.music.playing = true; }).catch(()=>{}); }
+  updPlay();
+}
+function updPlay() {
+  const b = document.getElementById('ppBtn'); if (b) b.innerHTML = state.music.playing ? '⏸' : '▶';
+  document.getElementById('ld').style.display = state.music.playing ? 'block' : 'none';
+  const mt = document.getElementById('mbtnTxt');
+  mt.innerHTML = state.music.playing && state.music.station ? `▶ ${state.music.station.nm}` : '♩ Música';
+}
+
+// ─────────────────────────────────────────────
+//  CONFETTI
+// ─────────────────────────────────────────────
+function launchConfetti() {
+  const clrs = ['#FF5B1D','#FFAA00','#7AC231','#2B72FF','#9B45FF','#FAF4EB','#FF8A5E','#f4a261'];
+  for (let i = 0; i < 70; i++) {
+    const e = document.createElement('div'); e.className = 'cpc';
+    const sz = 6 + Math.random() * 10;
+    e.style.cssText = `left:${Math.random()*100}%;top:0;width:${sz}px;height:${sz}px;background:${clrs[Math.floor(Math.random()*clrs.length)]};border-radius:${Math.random()>.5?'50%':'3px'};--d:${2+Math.random()*3}s;--dl:${Math.random()*.9}s`;
+    document.body.appendChild(e); setTimeout(() => e.remove(), 5500);
+  }
+}
+
+// ─────────────────────────────────────────────
+//  BOOT
+// ─────────────────────────────────────────────
+async function boot() {
+  state.scenes = buildScenes();
+  await loadWeather();
+  renderScene();
+  startPr(); sched();
+  startNC(); startBD(); startNW();
+  if (D.birthdays.some(b => isToday(b.day, b.month))) setTimeout(launchConfetti, 2000);
+}
+boot();
+</script>
+</body>
+</html>

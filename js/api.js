@@ -84,37 +84,24 @@ export async function fetchNews(fallback = []) {
 }
 
 /* ─── RADIO STATIONS (RadioBrowser API + curated fallback) ─── */
+/* ─── RADIO STATIONS — Free, no copyright issues ─── */
 const CURATED_STATIONS = [
-  { name: 'Mix FM SP',       genre: 'Pop / Hits',       url: 'https://playerservices.streamtheworld.com/api/livestream-redirect/MIXFM_SPAAC.aac', icon: '🔥' },
-  { name: 'ENERGY 97 FM',    genre: 'Electronic / Pop', url: 'https://cast1.hoost.com.br:8085/energy9', icon: '⚡' },
-  { name: 'Nova Brasil FM',  genre: 'Pop Brasileiro',   url: 'https://azuracast.novabrasil.com.br/radio/8000/radio.mp3', icon: '🇧🇷' },
-  { name: 'Rádio Globo',     genre: 'Pop / MPB',        url: 'https://streams.rds.fm/radioglobo128', icon: '🌟' },
-  { name: 'Hit FM',          genre: 'Pop Hits',         url: 'https://hitfm.br/stream', icon: '🎵' },
-  { name: 'Groove Salad',    genre: 'Chill / Ambient',  url: 'https://ice1.somafm.com/groovesalad-128-mp3', icon: '🌿' },
-  { name: 'PopTron',         genre: 'Pop Electronics',  url: 'https://ice1.somafm.com/poptron-128-mp3', icon: '🎹' },
-  { name: 'Lush',            genre: 'Indie Pop',        url: 'https://ice1.somafm.com/lush-128-mp3', icon: '🌸' },
+  // POP
+  { name: 'Mix FM SP',       genre: 'Pop Hits',         url: 'https://playerservices.streamtheworld.com/api/livestream-redirect/MIXFM_SPAAC.aac',    icon: '🔥' },
+  { name: 'Rádio Pop',       genre: 'Pop Brasileiro',   url: 'https://sc3.inhoster.com:8088/;',                                                         icon: '🎤' },
+  // R&B / SOUL
+  { name: 'SomaFM Lush',     genre: 'R&B / Soul',       url: 'https://ice2.somafm.com/lush-128-mp3',                                                   icon: '🎶' },
+  { name: 'SomaFM Soulside', genre: 'Soul / R&B',       url: 'https://ice6.somafm.com/soulfood-128-mp3',                                               icon: '🎸' },
+  // ELETRÔNICO
+  { name: 'SomaFM Drone',    genre: 'Electronic',       url: 'https://ice6.somafm.com/dronezone-128-mp3',                                              icon: '⚡' },
+  { name: 'SomaFM Groove',   genre: 'Chill / Electronic',url: 'https://ice6.somafm.com/groovesalad-128-mp3',                                           icon: '🌿' },
+  { name: 'SomaFM PopTron',  genre: 'Synth Pop',        url: 'https://ice6.somafm.com/poptron-128-mp3',                                                icon: '🎹' },
+  // MPB / BRASILEIRO
+  { name: 'Rádio MixBrasil', genre: 'MPB',              url: 'https://cast.hoost.com.br:8139/live',                                                    icon: '🇧🇷' },
+  { name: 'SomaFM Indie',    genre: 'Indie / Alternativo', url: 'https://ice6.somafm.com/indiepop-128-mp3',                                            icon: '✨' },
 ];
 
 export async function fetchRadioStations() {
-  try {
-    // Try RadioBrowser for popular Brazilian pop stations
-    const r = await fetch(
-      'https://de1.api.radio-browser.info/json/stations/search?country=Brazil&tag=pop&order=clickcount&reverse=true&limit=4&hidebroken=true&codec=MP3',
-      { headers: { 'User-Agent': 'T.News/1.0' } }
-    );
-    const live = await r.json();
-    if (live?.length) {
-      const liveStations = live
-        .filter(s => s.url_resolved)
-        .slice(0, 4)
-        .map(s => ({
-          name:  s.name.length > 20 ? s.name.slice(0, 20) + '…' : s.name,
-          genre: s.tags?.split(',')[0] || 'Pop',
-          url:   s.url_resolved,
-          icon:  '📻',
-        }));
-      return [...liveStations, ...CURATED_STATIONS.slice(0, 4)];
-    }
-  } catch { /* fall through to curated */ }
+  // Always return curated stations — RadioBrowser API is unreliable for streaming URLs
   return CURATED_STATIONS;
 }

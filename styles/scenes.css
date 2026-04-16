@@ -34,7 +34,7 @@
 
 /* Animated cloud layers */
 .wel-sky {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  position: absolute; top:0; left:0; right:0; bottom:0; pointer-events: none; overflow: hidden;
 }
 .wel-cloud {
   position: absolute;
@@ -54,7 +54,7 @@
 
 /* Subtle vignette overlay */
 .wel-vignette {
-  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  position: absolute; top:0; left:0; right:0; bottom:0; pointer-events: none; z-index: 1;
   background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,.45) 100%);
 }
 
@@ -102,20 +102,21 @@
   50%     { filter: brightness(0) invert(1) drop-shadow(0 6px 40px rgba(255,255,255,.3)) }
 }
 
-/* Weather widget — cinematic glassmorphic card, full width */
+/* Weather widget — TV-safe: no backdrop-filter */
 .weather-card {
   width: 100%;
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: auto 1px 1fr;
   gap: clamp(20px, 3vw, 40px);
+  -webkit-align-items: center;
   align-items: center;
-  background: rgba(0,0,0,.38);
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  /* Solid fallback — no backdrop-filter for TV browsers */
+  background: rgba(0,0,0,.72);
   border: 1px solid rgba(255,255,255,.18);
   border-radius: 22px;
   padding: clamp(18px, 2.5vh, 28px) clamp(22px, 3vw, 40px);
-  box-shadow: 0 8px 40px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.22);
+  box-shadow: 0 8px 40px rgba(0,0,0,.4);
 }
 .wth-current {
   display: flex; align-items: center; gap: clamp(14px, 2vw, 24px);
@@ -177,9 +178,14 @@
   grid-template-columns: 48% 52%;
 }
 .nc-bg {
-  position: absolute; inset: 0;
+  /* TV-safe: replace inset shorthand */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   overflow: hidden; pointer-events: none; opacity: .09;
-  display: flex; flex-direction: column; gap: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column; gap: 0;
 }
 .nc-bg-row {
   white-space: nowrap;
@@ -187,12 +193,17 @@
   font-size: clamp(3rem, 6.5vw, 7.5rem);
   line-height: 1.0; letter-spacing: -.04em;
   color: rgba(0,0,0,.7);
+  -webkit-animation: bgScroll 24s linear infinite;
   animation: bgScroll 24s linear infinite;
+  /* will-change helps TV GPU */
+  will-change: transform;
 }
 .nc-bg-row:nth-child(even) {
+  -webkit-animation-direction: reverse;
   animation-direction: reverse;
   color: rgba(0,0,0,.45);
 }
+@-webkit-keyframes bgScroll { from{-webkit-transform:translateX(0)} to{-webkit-transform:translateX(-50%)} }
 @keyframes bgScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* Photo side */
@@ -200,26 +211,48 @@
   position: relative; z-index: 2;
   height: 100%;
   padding: 20px 12px 20px 24px;
-  display: flex; align-items: center; justify-content: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .nc-photo-img,
 .nc-photo-init {
   width: 100%; height: 100%;
   border-radius: 22px;
   box-shadow: 0 28px 80px rgba(0,0,0,.32);
+  /* TV-safe: no scale() in animation */
+  -webkit-animation: photoFloat 6s ease-in-out infinite;
   animation: photoFloat 6s ease-in-out infinite;
+  will-change: transform;
 }
-.nc-photo-img  { object-fit: cover; object-position: center top }
+.nc-photo-img  {
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-position: center top;
+  -o-object-position: center top;
+}
 .nc-photo-init {
-  display: flex; align-items: center; justify-content: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   font-family: var(--fG); font-size: clamp(4rem, 8vw, 11rem);
   font-weight: 800; color: rgba(255,255,255,.3);
   background: rgba(190,50,0,.4);
   border: 2px solid rgba(255,255,255,.2);
 }
+@-webkit-keyframes photoFloat {
+  0%,100% { -webkit-transform: translateY(0) }
+  50%     { -webkit-transform: translateY(-10px) }
+}
 @keyframes photoFloat {
-  0%,100% { transform: translateY(0) scale(1) }
-  50%     { transform: translateY(-10px) scale(1.004) }
+  0%,100% { transform: translateY(0) }
+  50%     { transform: translateY(-10px) }
 }
 
 /* Text side */
@@ -285,29 +318,46 @@
   grid-template-columns: 46% 54%;
 }
 .bday-bg {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  /* TV-safe: replace inset shorthand */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; overflow: hidden;
 }
 .bday-bg svg { width: 100%; height: 100%; opacity: .05 }
 
 /* Polaroid */
 .bday-photo-side {
   position: relative; z-index: 2;
-  display: flex; align-items: center; justify-content: flex-end;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
   padding: 28px 36px 28px 52px;
 }
 .polaroid {
   background: white;
   padding: clamp(12px, 1.6vw, 20px) clamp(12px, 1.6vw, 20px) clamp(54px, 8.5vh, 95px);
   box-shadow: 0 32px 80px rgba(80,30,0,.2), 0 8px 24px rgba(0,0,0,.1);
+  -webkit-animation: polRock 6s ease-in-out infinite;
   animation: polRock 6s ease-in-out infinite;
-  width: min(340px, 40vw);
+  will-change: transform;
+  /* TV-safe: no min() function */
+  width: clamp(240px, 40vw, 340px);
+}
+@-webkit-keyframes polRock {
+  0%,100% { -webkit-transform: rotate(-2.5deg) translateY(0) }
+  50%     { -webkit-transform: rotate(-1deg) translateY(-10px) }
 }
 @keyframes polRock {
   0%,100% { transform: rotate(-2.5deg) translateY(0) }
   50%     { transform: rotate(-1deg) translateY(-10px) }
 }
 .pol-stripe {
-  height: 6px; display: grid;
+  height: 6px;
+  display: -webkit-grid;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-bottom: clamp(10px, 1.5vw, 18px);
 }
@@ -316,16 +366,29 @@
 .pol-stripe div:nth-child(3){background:var(--br)}
 .pol-stripe div:nth-child(4){background:var(--vn)}
 .pol-photo {
-  width: 100%; aspect-ratio: 4/5;
-  object-fit: cover; object-position: center top; display: block;
+  width: 100%;
+  /* TV-safe: replace aspect-ratio with explicit height */
+  height: clamp(200px, 35vh, 380px);
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-position: center top;
+  -o-object-position: center top;
+  display: block;
 }
 .pol-initials {
-  width: 100%; aspect-ratio: 4/5;
-  display: flex; align-items: center; justify-content: center;
+  width: 100%;
+  /* TV-safe: replace aspect-ratio with explicit height */
+  height: clamp(200px, 35vh, 380px);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   font-family: var(--fG); font-weight: 800;
   font-size: clamp(3rem, 6vw, 8rem);
   color: rgba(255,255,255,.28);
-  background: linear-gradient(135deg, #1e1420, #2d2440);
+  background: #1e1420;
 }
 .pol-caption {
   padding: clamp(12px, 1.8vh, 20px) 0 4px;
@@ -399,7 +462,7 @@
   background: var(--black); flex-direction: column; align-items: flex-start;
 }
 .menu-bg-glow {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  position: absolute; top:0; left:0; right:0; bottom:0; pointer-events: none; overflow: hidden;
 }
 .menu-bg-glow::after {
   content: ''; position: absolute;
@@ -512,7 +575,7 @@
   display: grid; grid-template-columns: 35% 65%;
 }
 .ev-bg-deco {
-  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  position: absolute; top:0; left:0; right:0; bottom:0; overflow: hidden; pointer-events: none;
 }
 .ev-bg-deco::before {
   content: ''; position: absolute;
@@ -523,7 +586,7 @@
 }
 /* Diagonal lines */
 .ev-lines {
-  position: absolute; inset: 0; opacity: .07;
+  position: absolute; top:0; left:0; right:0; bottom:0; opacity: .07;
 }
 .ev-left-panel {
   position: relative; z-index: 2;
@@ -664,12 +727,12 @@
   transition: transform .4s var(--ease), box-shadow .4s;
 }
 .news-tile-bg {
-  position: absolute; inset: 0;
+  position: absolute; top:0; left:0; right:0; bottom:0;
   background: var(--tile-bg);
   transition: transform .6s var(--ease);
 }
 .news-tile-overlay {
-  position: absolute; inset: 0;
+  position: absolute; top:0; left:0; right:0; bottom:0;
   background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
 }
 .news-tile-pattern {

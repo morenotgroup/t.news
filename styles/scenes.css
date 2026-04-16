@@ -94,6 +94,10 @@
   animation: logoPulse 5s ease-in-out infinite;
   transition: filter .3s;
 }
+/* T.Youth é o 1º logo — lettering alto, precisa de height menor */
+.wel-brand-logo:nth-child(1) {
+  height: clamp(38px, 5.5vh, 72px);
+}
 .wel-brand-logo:nth-child(2) { animation-delay: .8s }
 .wel-brand-logo:nth-child(3) { animation-delay: 1.6s }
 .wel-brand-logo:nth-child(4) { animation-delay: 2.4s }

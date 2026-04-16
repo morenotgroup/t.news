@@ -7,53 +7,45 @@ import { wcInfo } from './api.js';
 /* ─── WELCOME ─── */
 export function renderWelcome(weather) {
   const wthHTML = buildWeatherHTML(weather);
-  // Particles
-  const stars = Array.from({ length: 60 }, (_, i) => {
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const dur = 2 + Math.random() * 4;
-    const delay = Math.random() * 5;
-    const op = 0.2 + Math.random() * 0.6;
-    return `<div class="wel-star" style="left:${x}%;top:${y}%;--dur:${dur}s;--op:${op};animation-delay:${delay}s"></div>`;
-  }).join('');
-
   return `
-<div class="scene scene-welcome fu1">
-  <div class="wel-particles">${stars}</div>
+<div class="scene scene-welcome">
+  <!-- Animated sky clouds -->
+  <div class="wel-sky">
+    <div class="wel-cloud"></div>
+    <div class="wel-cloud"></div>
+    <div class="wel-cloud"></div>
+    <div class="wel-cloud"></div>
+  </div>
+  <div class="wel-vignette"></div>
 
-  <!-- LEFT: Brand logos -->
-  <div class="wel-logos-side">
-    <img class="wel-tgroup-logo fu1"
-      src="assets/logos/tgroup/offwhite.png" alt="t.group"
-      onerror="this.style.display='none'">
-
-    <div class="wel-brand-grid fu2">
-      <div class="wel-brand-card" style="--glow-color:var(--yu)">
-        <img class="wel-brand-logo"
-          src="assets/logos/brands/tyouth.png" alt="T.Youth"
-          onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:1.4rem;color:var(--yu);font-weight:800>T.Youth</span>'">
-      </div>
-      <div class="wel-brand-card" style="--glow-color:var(--dr)">
-        <img class="wel-brand-logo"
-          src="assets/logos/brands/tdreams.png" alt="T.Dreams"
-          onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:1.4rem;color:var(--dr);font-weight:800>T.Dreams</span>'">
-      </div>
-      <div class="wel-brand-card" style="--glow-color:var(--br)">
-        <img class="wel-brand-logo"
-          src="assets/logos/brands/tbrands.png" alt="T.Brands"
-          onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:1.4rem;color:var(--br);font-weight:800>T.Brands</span>'">
-      </div>
-      <div class="wel-brand-card" style="--glow-color:var(--vn)">
-        <img class="wel-brand-logo"
-          src="assets/logos/brands/tvenues.png" alt="T.Venues"
-          onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:1.4rem;color:var(--vn);font-weight:800>T.Venues</span>'">
-      </div>
+  <!-- TOP: Welcome text -->
+  <div class="wel-top fu1">
+    <div class="wel-greeting-label">Canal Interno T.Group</div>
+    <div class="wel-greeting">
+      Seja bem-vind<span class="wel-hl">o</span>, vind<span class="wel-hl">a</span> e vind<span class="wel-hl">e</span>
     </div>
   </div>
 
-  <!-- RIGHT: Weather -->
-  <div class="wel-weather-side fu3">
-    <div class="wel-weather-city">${CFG.WEATHER_CITY}</div>
+  <!-- MIDDLE: 4 brand logos — large, no boxes -->
+  <div class="wel-logos fu2">
+    <div class="wel-logo-row">
+      <img class="wel-brand-logo"
+        src="assets/logos/brands/tyouth.png" alt="T.Youth"
+        onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:2.5rem;color:white;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.5)>T.Youth</span>'">
+      <img class="wel-brand-logo"
+        src="assets/logos/brands/tdreams.png" alt="T.Dreams"
+        onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:2.5rem;color:white;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.5)>T.Dreams</span>'">
+      <img class="wel-brand-logo"
+        src="assets/logos/brands/tbrands.png" alt="T.Brands"
+        onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:2.5rem;color:white;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.5)>T.Brands</span>'">
+      <img class="wel-brand-logo"
+        src="assets/logos/brands/tvenues.png" alt="T.Venues"
+        onerror="this.outerHTML='<span style=font-family:var(--fG);font-size:2.5rem;color:white;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.5)>T.Venues</span>'">
+    </div>
+  </div>
+
+  <!-- BOTTOM: Cinematic weather widget -->
+  <div class="wel-bottom fu3">
     ${wthHTML}
   </div>
 </div>`;
@@ -62,14 +54,24 @@ export function renderWelcome(weather) {
 function buildWeatherHTML(weather) {
   if (!weather) {
     return `<div class="weather-card">
-      <div class="wth-current"><span class="wth-icon">🌡</span>
-        <div><div class="wth-temp">--°C</div><div class="wth-cond">Carregando...</div></div>
+      <div class="wth-current">
+        <span class="wth-icon">🌡</span>
+        <div class="wth-main">
+          <div class="wth-temp">--°C</div>
+          <div class="wth-cond">São Paulo, SP</div>
+        </div>
+      </div>
+      <div class="wth-divider"></div>
+      <div class="wth-forecast">
+        <div class="wth-day-card"><div class="wth-day-name">--</div><div class="wth-day-ic">🌡</div><div class="wth-day-max">--°</div><div class="wth-day-min">--°</div></div>
+        <div class="wth-day-card"><div class="wth-day-name">--</div><div class="wth-day-ic">🌡</div><div class="wth-day-max">--°</div><div class="wth-day-min">--°</div></div>
+        <div class="wth-day-card"><div class="wth-day-name">--</div><div class="wth-day-ic">🌡</div><div class="wth-day-max">--°</div><div class="wth-day-min">--°</div></div>
       </div>
     </div>`;
   }
   const cur = weather.current;
-  const d = weather.daily;
-  const wi = wcInfo(cur.weather_code);
+  const d   = weather.daily;
+  const wi  = wcInfo(cur.weather_code);
   const days = [1, 2, 3].map(i => {
     const dd = new Date(); dd.setDate(dd.getDate() + i);
     const di = wcInfo(d.weather_code[i]);
@@ -83,9 +85,9 @@ function buildWeatherHTML(weather) {
   return `<div class="weather-card">
     <div class="wth-current">
       <span class="wth-icon">${wi.i}</span>
-      <div>
+      <div class="wth-main">
         <div class="wth-temp">${Math.round(cur.temperature_2m)}°C</div>
-        <div class="wth-cond">${wi.l}</div>
+        <div class="wth-cond">${wi.l} &nbsp;·&nbsp; ${CFG.WEATHER_CITY}</div>
       </div>
     </div>
     <div class="wth-divider"></div>

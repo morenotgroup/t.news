@@ -32,7 +32,7 @@
 
 .station-grid {
   display: grid;
-  grid-template-columns: repeat(var(--cols, 6), 1fr);
+  grid-template-columns: repeat(var(--cols, 9), 1fr);
   gap: 11px; margin-bottom: 20px;
 }
 .station-card {

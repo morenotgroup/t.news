@@ -22,11 +22,18 @@ window.TNEWS = {
   //        Nomeie o arquivo como: welcome_NOME.png
   newcomers: [
     {
-      name:   'Gabriela Lima',    // [*] Nome completo
+      name:   'Gabriela Mattar',    // [*] Nome completo
       dept:   'T.Youth',          // [*] Empresa/área
       role:   'Criação',          // [*] Cargo/função
       genero: 'f',                // [*] 'f' ou 'm'
-      photo:  'assets/people/welcome_gabriela.png', // caminho da arte
+      photo:  'assets/people/welcomer_gabriela_tyouth.png', // caminho da arte
+    },
+     {
+      name:   'Erika Ferreira',    // [*] Nome completo
+      dept:   'T.Venues',          // [*] Empresa/área
+      role:   'Comercial',          // [*] Cargo/função
+      genero: 'f',                // [*] 'f' ou 'm'
+      photo:  'assets/people/welcomer_erika_tvenues.png', // caminho da arte
     },
 
     // ── Descomente e preencha para adicionar mais ──

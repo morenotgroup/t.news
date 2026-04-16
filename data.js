@@ -52,49 +52,85 @@ window.TNEWS = {
   // day + month: usados para detectar aniversário hoje.
   birthdays: [
     {
-      name:      'Claudia',           // [*] Nome completo
-      firstname: 'clau',              // [*] Primeiro nome em minúsculo (aparece grande)
-      dept:      'T.Youth',           // [*]
-      date:      '07 de Abril',       // [*] Texto da data
-      day:       7,                   // [*] Dia (número)
+      name:      'Gabriel',           // [*] Nome completo
+      firstname: 'Brasa',              // [*] Primeiro nome em minúsculo (aparece grande)
+      dept:      'Neo Formaturas',           // [*]
+      date:      '01 de Abril',       // [*] Texto da data
+      day:       1,                   // [*] Dia (número)
       month:     4,                   // [*] Mês (número 1–12)
-      photo:     'assets/people/bday_clau.png', // caminho da arte ou null
+      photo:     'assets/people/0104_BDAY_GABRIEL_NEOpng.png', // caminho da arte ou null
     },
     {
-      name:      'Rafael Mendes',
-      firstname: 'rafael',
-      dept:      'T.Brands',
-      date:      '18 de Abril',
-      day:       18,
-      month:     4,
-      photo:     null,
-    },
-    {
-      name:      'Juliana Costa',
-      firstname: 'juliana',
-      dept:      'T.Venues',
-      date:      '22 de Abril',
-      day:       22,
-      month:     4,
-      photo:     null,
-    },
-    {
-      name:      'Pedro Alves',
-      firstname: 'pedro',
-      dept:      'T.Dreams',
-      date:      '25 de Abril',
-      day:       25,
-      month:     4,
-      photo:     null,
-    },
-    {
-      name:      'Marina Silva',
-      firstname: 'marina',
+      name:      'Gustavo',
+      firstname: 'Gus',
       dept:      'T.Youth',
-      date:      '30 de Abril',
-      day:       30,
+      date:      '01 de Abril',
+      day:       1,
       month:     4,
-      photo:     null,
+      photo:     'assets/people/0104_BDAY_GUS_TY.png', // caminho da arte ou null
+    },
+    {
+      name:      'Matheus',
+      firstname: 'Mapp',
+      dept:      'Neo Formaturas',
+      date:      '01 de Abril',
+      day:       1,
+      month:     4,
+      photo:     'assets/people/0104_BDAY_MATHEUS_NEO.png', // caminho da arte ou null
+    },
+    {
+      name:      'Cláudia',
+      firstname: 'Clau',
+      dept:      'T.Youth',
+      date:      '07 de Abril',
+      day:       7,
+      month:     4,
+      photo:     'assets/people/0704_BDAY_CLAU_TY.png', // caminho da arte ou null
+    },
+    {
+      name:      'Bruno',
+      firstname: 'Bruninho',
+      dept:      'Neo Formaturas',
+      date:      '30 de Abril',
+      day:       10,
+      month:     4,
+      photo:     'assets/people/1004_BDAY_bruniho_NF.png', // caminho da arte ou null
+    },
+     {
+      name:      'Eduarda',
+      firstname: 'Duda',
+      dept:      'T.Youth',
+      date:      '10 de Abril',
+      day:       10,
+      month:     4,
+      photo:     'assets/people/1004_BDAY_duda_ty.png', // caminho da arte ou null
+    },
+     {
+      name:      'Francisco',
+      firstname: 'Fran',
+      dept:      'Neo Formaturas',
+      date:      '12 de Abril',
+      day:       12,
+      month:     4,
+      photo:     'assets/people/120426_bday_fran_tyouth.png', // caminho da arte ou null
+    },
+     {
+      name:      'Vinicius David',
+      firstname: 'Viny',
+      dept:      'T.Youth',
+      date:      '12 de Abril',
+      day:       12,
+      month:     4,
+      photo:     'assets/people/120426_bday_viny_tyouth.png', // caminho da arte ou null
+    },
+     {
+      name:      'Yasmin',
+      firstname: 'Yas',
+      dept:      'T.Youth',
+      date:      '14 de Abril',
+      day:       14,
+      month:     4,
+      photo:     'assets/people/140426_bday_yasmin_tyouth.png', // caminho da arte ou null
     },
   ],
 

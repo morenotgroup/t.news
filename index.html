@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.News — Canal Interno T.Group</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/layout.css">
+<link rel="stylesheet" href="styles/scenes.css">
+<link rel="stylesheet" href="styles/player.css">
+
+<style>
+/* Confetti keyframe (needs to be in main document) */
+@keyframes confetti {
+  0%   { transform: translateY(-60px) rotate(0deg); opacity: 1 }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0 }
+}
+</style>
+</head>
+
+<body>
+<!-- Grain -->
+<div class="grain"></div>
+
+<!-- Curtain (scene transition) -->
+<div class="curtain" id="curtain"></div>
+
+<!-- Brand color strip -->
+<div class="bstrip">
+  <div class="bs-yu"></div>
+  <div class="bs-dr"></div>
+  <div class="bs-br"></div>
+  <div class="bs-vn"></div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="hdr">
+  <div class="hdr-brand">
+    <img class="hdr-logo"
+      src="assets/logos/tgroup/white.png" alt="t.group"
+      onerror="this.style.display='none'">
+    <div class="hdr-sep"></div>
+    <div class="hdr-name">
+      <div class="hdr-title">T<span class="hdr-dot">.</span>News</div>
+      <div class="hdr-sub">Canal Interno T.Group</div>
+    </div>
+  </div>
+
+  <div class="clk">
+    <div class="clk-time" id="clock-time">00:00</div>
+    <div class="clk-date" id="clock-date">Carregando...</div>
+  </div>
+
+  <button class="music-btn" id="music-toggle">
+    <div class="led" id="music-led"></div>
+    <span id="music-label">♩ Música</span>
+  </button>
+</header>
+
+<!-- ══ MAIN STAGE ══ -->
+<main id="stage">
+  <div id="scene-wrap"></div>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="ftr">
+  <div class="si-row" id="scene-indicators"></div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker-track">Carregando notícias...</div>
+  </div>
+
+  <div class="progress-row">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-label" id="scene-label">WELCOME</div>
+  </div>
+</footer>
+
+<!-- ══ MUSIC PANEL ══ -->
+<div class="player-panel" id="player-panel">
+  <div class="player-header">
+    <div class="player-title">♩ Central de Música</div>
+    <div class="player-close" onclick="window.__player.close()">✕</div>
+  </div>
+  <div class="station-grid" id="station-grid"></div>
+  <div class="player-controls" id="player-controls">
+    <div class="player-idle">Selecione uma estação para começar.</div>
+  </div>
+</div>
+
+<!-- Hidden audio player -->
+<audio id="audio-player" preload="none"></audio>
+
+<!-- ══ APP ══ -->
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* ═══════════════════════════════════════
+   T.NEWS — BASE STYLES
+   Variables, Typography, Reset
+═══════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Gonzaga';
+  src: url('../assets/fonts/gonzaga-roman.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gonzaga';
+  src: url('../assets/fonts/gonzaga-italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Sisma';
+  src: url('../assets/fonts/sisma-bold.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Sisma';
+  src: url('../assets/fonts/sisma-medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+/* ─── DESIGN TOKENS ─── */
+:root {
+  /* Colors */
+  --black:   #080808;
+  --dark1:   #111111;
+  --dark2:   #1a1a1a;
+  --or:      #FF5B1D;
+  --ord:     #C93A00;
+  --orl:     #FF8A5E;
+  --orb:     rgba(255,91,29,.15);
+  --cream:   #FAF4EB;
+  --yu:      #FFAA00;
+  --dr:      #7AC231;
+  --br:      #2B72FF;
+  --vn:      #9B45FF;
+  --tx:      #F5F5F5;
+  --dim:     rgba(245,245,245,.42);
+  --dimm:    rgba(245,245,245,.68);
+
+  /* Fonts */
+  --fG: 'Gonzaga', Georgia, serif;
+  --fS: 'Sisma', 'Space Mono', monospace;
+  --fB: 'DM Sans', system-ui, sans-serif;
+
+  /* Easing */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* Layout */
+  --strip-h: 6px;
+  --hdr-h:   84px;
+  --ftr-h:   66px;
+  --hdr-top: calc(var(--strip-h) + var(--hdr-h)); /* 90px */
+  --content-h: calc(100vh - var(--hdr-top) - var(--ftr-h));
+
+  /* TV-first type scale */
+  --t-hero:  clamp(4rem,  7.5vw, 9rem);
+  --t-xl:    clamp(3rem,  5.5vw, 7rem);
+  --t-lg:    clamp(2.2rem,4vw,   5.2rem);
+  --t-md:    clamp(1.6rem,2.5vw, 3.2rem);
+  --t-sm:    clamp(1.2rem,1.8vw, 2.2rem);
+  --t-xs:    clamp(.9rem, 1.2vw, 1.5rem);
+  --t-2xs:   clamp(.72rem,.95vw, 1.2rem);
+  --t-label: clamp(.6rem, .8vw,  1rem);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: var(--black);
+  color: var(--tx);
+  font-family: var(--fB);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── GRAIN OVERLAY ─── */
+.grain {
+  position: fixed; inset: 0; z-index: 998;
+  pointer-events: none; opacity: .022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .5s steps(1) infinite;
+}
+@keyframes grain {
+  0%  { transform: translate(0,0) }
+  25% { transform: translate(-4%,-6%) }
+  50% { transform: translate(6%,4%) }
+  75% { transform: translate(-2%,8%) }
+  100%{ transform: translate(4%,-3%) }
+}
+
+/* ─── ENTER ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px) }
+  to   { opacity: 1; transform: none }
+}
+.fu1 { animation: fadeUp .7s var(--ease) .04s both }
+.fu2 { animation: fadeUp .7s var(--ease) .16s both }
+.fu3 { animation: fadeUp .7s var(--ease) .28s both }
+.fu4 { animation: fadeUp .7s var(--ease) .40s both }
+.fu5 { animation: fadeUp .7s var(--ease) .52s both }
+.fu6 { animation: fadeUp .7s var(--ease) .64s both }

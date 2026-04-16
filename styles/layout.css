@@ -28,12 +28,17 @@
 
 /* Logo group */
 .hdr-brand {
-  display: flex; align-items: center; gap: 18px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 18px;
 }
 .hdr-logo {
   height: clamp(28px, 3.8vh, 44px);
   width: auto; object-fit: contain;
-  mix-blend-mode: screen;
+  /* TV-safe: filter instead of mix-blend-mode */
+  filter: brightness(0) invert(1);
 }
 .hdr-sep {
   width: 1px; height: 34px;

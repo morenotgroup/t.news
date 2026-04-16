@@ -102,7 +102,8 @@ export function renderNewcomer(person, allPeople, currentIndex, mes, ano) {
     : 'bem-<br>vindo<span class="nc-excl">!</span>';
 
   const rowText = 'bem-vindo! bem-vinda! bem-vindo! bem-vinda! bem-vindo! bem-vinda! ';
-  const rows = Array(16).fill(null).map(() =>
+  // TV-safe: only 8 rows (16 causes GPU drop on WebOS/Android TV)
+  const rows = Array(8).fill(null).map(() =>
     `<div class="nc-bg-row">${rowText + rowText + rowText}</div>`
   ).join('');
 

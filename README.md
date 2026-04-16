@@ -1,104 +1,94 @@
 # T.News — Canal Interno T.Group
 
-Plataforma de sinalização digital para as TVs internas do T.Group.
+Plataforma de sinalização digital para TVs internas. Site estático, deploy via Vercel.
 
 ---
 
-## 📁 Estrutura de arquivos
+## 📁 Estrutura
 
 ```
 tnews/
-├── index.html              → Aplicação principal (não editar)
+├── index.html              → App (não editar)
 ├── data.js                 → ⭐ EDITAR MENSALMENTE
 └── assets/
-    ├── fonts/              → Fontes (não alterar)
-    │   ├── gonzaga-roman.ttf
-    │   ├── gonzaga-italic.ttf
-    │   ├── sisma-bold.otf
-    │   └── sisma-medium.otf
+    ├── fonts/              → Gonzaga + Sisma (não alterar)
     ├── logos/              → Logos das empresas
     │   ├── tgroup_white.png
-    │   ├── tgroup_orange.png
     │   ├── tgroup_offwhite.png
+    │   ├── tgroup_orange.png
     │   ├── tgroup_black.png
-    │   ├── logos_subbrands.png
-    │   └── TVENUES5.png
+    │   └── logos_subbrands.png   ← logo composto das 4 marcas
     └── people/             → ⭐ Adicionar mensalmente
-        ├── bday_NOME.png       → Arte de aniversário
-        └── welcome_NOME.png    → Arte de boas-vindas
+        ├── bday_NOME.png
+        └── welcome_NOME.png
 ```
 
 ---
 
-## 🗓 Atualização mensal
+## 🔄 Atualização mensal (5 minutos)
 
-### 1. Adicione as artes em `assets/people/`
-- Aniversários: `bday_nome.png` (ex: `bday_rafaela.png`)
-- Boas-vindas: `welcome_nome.png` (ex: `welcome_joao.png`)
+### 1. Adicionar artes em `assets/people/`
+- Aniversário: `bday_nome.png`
+- Boas-vindas: `welcome_nome.png`
 
-### 2. Edite `data.js`
+### 2. Editar `data.js`
 Abra o arquivo e atualize:
-- `mes` e `ano` no topo
-- Array `newcomers` — novos colaboradores
-- Array `birthdays` — aniversariantes do mês
-- Objeto `menu` — cardápio da semana
-- Array `news` — notícias T.News
-- Array `events` — agenda do mês
+- `mes` / `ano`
+- `newcomers` — novos colaboradores (adicione `photo` apontando para o arquivo)
+- `birthdays` — aniversariantes (adicione `photo` ou deixe `null`)
+- `menu` — cardápio da semana
+- `events` — agenda do mês
 
-### 3. Faça deploy via GitHub + Vercel
+### 3. Publicar
 ```bash
 git add .
-git commit -m "Update: conteúdo de [MÊS/ANO]"
+git commit -m "Conteúdo: Maio 2026"
 git push
 ```
-O Vercel faz o deploy automaticamente após o push.
+Vercel faz deploy automático em ~30 segundos.
 
 ---
 
 ## 🚀 Deploy no Vercel (primeira vez)
 
-1. Acesse [vercel.com](https://vercel.com) e faça login com GitHub
-2. Clique em **"Add New Project"**
-3. Selecione o repositório `tnews` (ou o nome que você der)
-4. Configure:
+1. Acesse vercel.com → New Project → importe do GitHub
+2. Configurações:
    - **Framework Preset:** `Other`
-   - **Root Directory:** `./` (deixar padrão)
+   - **Root Directory:** `./`
    - **Build Command:** *(deixar vazio)*
-   - **Output Directory:** `./` (ponto barra)
-5. Clique **Deploy**
+   - **Output Directory:** `./`
+3. Deploy → pronto!
 
-> O Vercel vai detectar que é um site estático e servir o `index.html` diretamente.
-
-### URL de produção
-Após o deploy você terá uma URL como:
-`https://tnews-tgroup.vercel.app`
-
-Abra essa URL no Chrome do computador da TV e pressione **F11** para tela cheia.
+### TV Setup
+Abra a URL no Chrome da TV → F11 para tela cheia.
+Para auto-reload a cada hora (manter atualizado), configure no Chrome:
+- Extensão "Auto Refresh Plus" com intervalo de 60 minutos.
 
 ---
 
-## 🔁 Workflow mensal
+## 🪜 Onde ficam os logos das marcas
 
-```
-1. Receber artes (bday + welcome) do time de design
-2. Nomear corretamente e colocar em assets/people/
-3. Editar data.js com os dados do mês
-4. git add . && git commit -m "Abril 2026" && git push
-5. Vercel deploya em ~30 segundos
-6. TV atualiza ao recarregar a página (F5)
-```
+Para trocar os logos das empresas no rodapé da tela Welcome:
+- Substitua `assets/logos/logos_subbrands.png` pela nova versão
+
+Para trocar o logo principal no header:
+- Substitua `assets/logos/tgroup_white.png`
+- O logo deve ser em PNG com fundo transparente (ou escuro — usamos `mix-blend-mode: screen`)
+
+---
+
+## 📰 Notícias automáticas
+
+As notícias na tela T.News são buscadas automaticamente via RSS (G1 Entretenimento + Folha Ilustrada) ao carregar a página, sem necessidade de API key.
+
+As notícias em `data.js` funcionam como fallback quando não há conexão.
 
 ---
 
 ## 🎵 Música
-A Central de Música usa streams do [SomaFM](https://somafm.com) — gratuito, sem anúncios.
-Clique no botão **♩ Música** no canto superior direito para selecionar a estação do dia.
 
----
-
-## 🌤 Clima
-O widget de clima usa [Open-Meteo](https://open-meteo.com) — gratuito, sem necessidade de API key.
-Atualiza automaticamente ao carregar a página.
+Clique em **♩ Música** no canto superior direito para selecionar a estação do dia.
+Usa streams do SomaFM — gratuito, sem anúncios.
 
 ---
 

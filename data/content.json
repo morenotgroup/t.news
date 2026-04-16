@@ -5,49 +5,51 @@
   },
 
   "newcomers": [
-    { "name": "Gabriela Mattar",  "firstname": "gabriela",  "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_gabriela.png" },
-    { "name": "Diego de Souza",   "firstname": "diego",     "dept": "T.Group",          "role": "Estoque A&B",       "genero": "m", "photo": "assets/people/welcome_diego.png" },
-    { "name": "Erika Ferreira",   "firstname": "erika",     "dept": "T.Venues",         "role": "Comercial",         "genero": "f", "photo": "assets/people/welcome_erika.png" },
-    { "name": "Enzo",             "firstname": "enzo",      "dept": "T.Venues",         "role": "Operações",         "genero": "m", "photo": "assets/people/welcome_enzo.png" },
-    { "name": "Arthur",           "firstname": "arthur",    "dept": "T.Youth",          "role": "Criação",           "genero": "m", "photo": "assets/people/welcome_arthur.png" },
-    { "name": "Julia",            "firstname": "julia",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "f", "photo": "assets/people/welcome_julia.png" },
-    { "name": "Pamela",           "firstname": "pamela",    "dept": "T.Brands",         "role": "Marketing",         "genero": "f", "photo": "assets/people/welcome_pamela.png" },
-    { "name": "Ramon",            "firstname": "ramon",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "m", "photo": "assets/people/welcome_ramon.png" },
-    { "name": "Larissa",          "firstname": "larissa",   "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_larissa.png" },
-    { "name": "Gabrielle",        "firstname": "gabrielle", "dept": "T.Group",          "role": "Gente & Cultura",   "genero": "f", "photo": "assets/people/welcome_gabrielle.png" }
+    { "name": "Gabriela Mattar",  "firstname": "Gabriela",  "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_gabriela.png" },
+    { "name": "Diego de Souza",   "firstname": "Diego",     "dept": "T.Group",          "role": "Estoque A&B",       "genero": "m", "photo": "assets/people/welcome_diego.png" },
+    { "name": "Erika Ferreira",   "firstname": "Erika",     "dept": "T.Venues",         "role": "Comercial",         "genero": "f", "photo": "assets/people/welcome_erika.png" },
+    { "name": "Enzo",             "firstname": "Enzo",      "dept": "T.Venues",         "role": "Operações",         "genero": "m", "photo": "assets/people/welcome_enzo.png" },
+    { "name": "Arthur",           "firstname": "Arthur",    "dept": "T.Youth",          "role": "Criação",           "genero": "m", "photo": "assets/people/welcome_arthur.png" },
+    { "name": "Julia",            "firstname": "Julia",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "f", "photo": "assets/people/welcome_julia.png" },
+    { "name": "Pamela",           "firstname": "Pamela",    "dept": "T.Brands",         "role": "Marketing",         "genero": "f", "photo": "assets/people/welcome_pamela.png" },
+    { "name": "Ramon",            "firstname": "Ramon",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "m", "photo": "assets/people/welcome_ramon.png" },
+    { "name": "Larissa",          "firstname": "Larissa",   "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_larissa.png" },
+    { "name": "Gabrielle",        "firstname": "Gabrielle", "dept": "T.Group",          "role": "Facilities",        "genero": "f", "photo": "assets/people/welcome_gabrielle.png" }
   ],
 
   "birthdays": [
-    { "name": "Gabriel",    "firstname": "gabriel",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_gabriel.png" },
+    { "name": "Gabriel",    "firstname": "Braza",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_gabriel.png" },
     { "name": "Gustavo",    "firstname": "Gus",      "dept": "T.Youth",        "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_gus.png" },
-    { "name": "Matheus",    "firstname": "matheus",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_matheus.png" },
-    { "name": "Bruninho",   "firstname": "bruniho",  "dept": "Neo Formaturas", "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_bruniho.png" },
-    { "name": "Duda",       "firstname": "duda",     "dept": "T.Youth",        "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_duda.png" },
-    { "name": "Fran",       "firstname": "fran",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_fran.png" },
-    { "name": "Viny",       "firstname": "viny",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_viny.png" },
-    { "name": "Yasmin",     "firstname": "yasmin",   "dept": "T.Youth",        "date": "14 de Abril", "day": 14, "month": 4, "photo": "assets/people/bday_yasmin.png" }
+    { "name": "Matheus",    "firstname": "Mapp",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_matheus.png" },
+    { "name": "Bruninho",   "firstname": "Bruninho",  "dept": "Neo Formaturas", "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_bruniho.png" },
+    { "name": "Duda",       "firstname": "Duda",     "dept": "T.Youth",        "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_duda.png" },
+    { "name": "Fran",       "firstname": "Fran",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_fran.png" },
+    { "name": "Viny",       "firstname": "Viny",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_viny.png" },
+    { "name": "Yasmin",     "firstname": "Yas",   "dept": "T.Youth",        "date": "14 de Abril", "day": 14, "month": 4, "photo": "assets/people/bday_yasmin.png" },
+    { "name": "Mariana",     "firstname": "Mari",   "dept": "T.Brands",        "date": "18 de Abril", "day": 18, "month": 4, "photo": "assets/people/180426_bday_marimi_TB.png" },
+    { "name": "Ferrari",     "firstname": "Ferrari",   "dept": "Neo Formaturas",        "date": "18 de Abril", "day": 18, "month": 4, "photo": "assets/people/180426_bday_ferrari_neo.png" }
   ],
 
   "menu": {
     "Segunda": {
-      "main":  ["Arroz branco", "Feijão tropeiro", "Filé de Frango grelhado", "Bife bovino", "Farofa especial", "Purê de Abóbora"],
-      "salad": ["Alface crespa", "Tomate italiano", "Pepino japonês", "Cenoura ralada"]
+      "main":  ["Arroz", "Feijão", "Filé de Frango grelhado", "Bife bovino", "Farofa especial", "Purê de Abóbora"],
+      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura ralada"]
     },
     "Terça": {
-      "main":  ["Arroz branco", "Feijão", "Filé de Frango grelhado", "Creme de Milho especial"],
-      "salad": ["Alface crespa", "Tomate", "Pepino", "Cenoura", "Beterraba"]
+      "main":  ["Arroz", "Feijão", "Filé de Frango grelhado", "Creme de Milho"],
+      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba"]
     },
     "Quarta": {
-      "main":  ["Arroz branco", "Feijão", "Strogonoff de Frango", "Batata Palha crocante"],
-      "salad": ["Alface", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
+      "main":  ["Arroz", "Feijão", "Strogonoff de Frango", "Batata Palha"],
+      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
     },
     "Quinta": {
-      "main":  ["Arroz branco", "Feijão", "Bife bovino", "Creme de Cebola", "Farofa especial"],
-      "salad": ["Alface", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
+      "main":  ["Arroz", "Feijão", "Bife bovino", "Creme de Cebola", "Farofa especial"],
+      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
     },
     "Sexta": {
-      "main":  ["Arroz branco", "Feijão", "Bife bovino grelhado", "Batata Assada rústica"],
-      "salad": ["Alface crespa", "Tomate italiano", "Pepino japonês", "Cenoura ralada"]
+      "main":  ["Arroz", "Feijão", "Bife bovino grelhado", "Batata Assada"],
+      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura ralada"]
     }
   },
 

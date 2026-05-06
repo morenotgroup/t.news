@@ -1,6 +1,6 @@
 {
   "meta": {
-    "mes": "Abril",
+    "mes": "Maio",
     "ano": 2026
   },
 
@@ -9,16 +9,9 @@
   ],
 
   "birthdays": [
-    { "name": "Gabriel",    "firstname": "Braza",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_gabriel.png" },
-    { "name": "Gustavo",    "firstname": "Gus",      "dept": "T.Youth",        "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_gus.png" },
-    { "name": "Matheus",    "firstname": "Mapp",  "dept": "Neo Formaturas", "date": "01 de Abril", "day": 1,  "month": 4, "photo": "assets/people/bday_matheus.png" },
-    { "name": "Bruninho",   "firstname": "Bruninho",  "dept": "Neo Formaturas", "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_bruniho.png" },
-    { "name": "Duda",       "firstname": "Duda",     "dept": "T.Youth",        "date": "10 de Abril", "day": 10, "month": 4, "photo": "assets/people/bday_duda.png" },
-    { "name": "Fran",       "firstname": "Fran",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_fran.png" },
-    { "name": "Viny",       "firstname": "Viny",     "dept": "T.Youth",        "date": "12 de Abril", "day": 12, "month": 4, "photo": "assets/people/bday_viny.png" },
-    { "name": "Yasmin",     "firstname": "Yas",   "dept": "T.Youth",        "date": "14 de Abril", "day": 14, "month": 4, "photo": "assets/people/bday_yasmin.png" },
-    { "name": "Mariana",     "firstname": "Mari",   "dept": "T.Brands",        "date": "18 de Abril", "day": 18, "month": 4, "photo": "assets/people/180426_bday_marimi_TB.png" },
-    { "name": "Ferrari",     "firstname": "Ferrari",   "dept": "Neo Formaturas",        "date": "18 de Abril", "day": 18, "month": 4, "photo": "assets/people/180426_bday_ferrari_neo.png" }
+    { "name": "Yasmin",    "firstname": "Yas",  "dept": "T.Brands", "date": "12 de Maio", "day": 12,  "month": 5, "photo": "assets/people/1205_bday_yasmin_maio_TB.png" },
+    { "name": "Guilherme",    "firstname": "Molina",      "dept": "T.Youth",        "date": "29 de Maio", "day": 29,  "month": 5, "photo": "assets/people/2905_bday_molina_maio_TY.png" },
+    { "name": "Daniel",    "firstname": "Dani",  "dept": "T.Venues", "date": "29 de Maio", "day": 29,  "month": 4, "photo": "assets/people/2905_bday_daniel_maio_TV.png" }
   ],
 
   "menu": {
@@ -46,28 +39,28 @@
 
   "events": [
     {
-      "day": 23, "month": 4, "year": 2026,
+      "day": 21, "month": 5, "year": 2026,
       "time": "20h – 22h",
       "title": "Esportes T.Group",
       "desc": "Vôlei de Areia + Futebol Society na PLAYBALL Unidade 2. Participação gratuita!",
       "type": "gc", "ic": "⚽", "color": "#7AC231"
     },
     {
-      "day": 30, "month": 4, "year": 2026,
+      "day": 28, "month": 5, "year": 2026,
       "time": "17h00",
       "title": "Café com T",
       "desc": "Momento especial de conexão entre as equipes.",
       "type": "gc", "ic": "☕", "color": "#FF5B1D"
     },
     {
-      "day": 30, "month": 4, "year": 2026,
+      "day": 28, "month": 5, "year": 2026,
       "time": "18h20",
-      "title": "Aniversariantes de Março & Abril",
-      "desc": "Celebração especial dos aniversariantes dos dois meses.",
+      "title": "Aniversariantes de Maio",
+      "desc": "Celebração especial dos aniversariantes deste mês.",
       "type": "gc", "ic": "🎂", "color": "#FFAA00"
     },
     {
-      "day": 30, "month": 4, "year": 2026,
+      "day": 28, "month": 5, "year": 2026,
       "time": "18h30",
       "title": "Happy Hour T.Group",
       "desc": "Confraternização mensal — vem celebrar com a gente!",
@@ -76,11 +69,11 @@
   ],
 
   "news_fallback": [
-    { "cat": "FESTIVAL",    "title": "Lollapalooza Brasil 2026 anuncia headliners para edição histórica em Interlagos",       "body": "Mais de 80 atrações em 3 dias. Expectativa de público recorde na maior edição da história.",     "tag": "São Paulo",   "source": "Folha de SP", "color": "#e63946", "icon": "🎸" },
-    { "cat": "CULTURA",     "title": "Carnaval de SP bate recorde com 8 milhões de foliões nas ruas da cidade",               "body": "SP consolida-se como o maior destino carnavalesco do país, superando recordes históricos.",       "tag": "Carnaval",    "source": "G1",         "color": "#f4a261", "icon": "🎉" },
-    { "cat": "TENDÊNCIA",   "title": "Experiências XR dominam o mercado de eventos premium em 2026",                          "body": "Realidade mista e instalações interativas criam memórias únicas para cada convidado.",             "tag": "Inovação",    "source": "TechCrunch", "color": "#a78bfa", "icon": "🥽" },
-    { "cat": "MÚSICA",      "title": "Shows ao vivo superam streaming como principal fonte de renda dos artistas",             "body": "A virada é irreversível — venues respondem com espaços cada vez mais sofisticados.",              "tag": "Mercado",     "source": "Billboard",  "color": "#38bdf8", "icon": "🎵" },
-    { "cat": "GASTRONOMIA", "title": "São Paulo entra no top 5 dos destinos gastronômicos mais relevantes do mundo",           "body": "Guia World's Best eleva SP ao ranking global pela cena criativa de bares e restaurantes.",         "tag": "Gastronomia", "source": "Veja SP",    "color": "#34d399", "icon": "🍽️" },
-    { "cat": "LIFESTYLE",   "title": "Rooftop bars transformam a paisagem noturna e redefinem a hospitalidade em SP",          "body": "Nova geração de bares em altura atrai o público mais exigente e conectado da capital.",          "tag": "Nightlife",   "source": "Time Out SP","color": "#FF5B1D", "icon": "🌆" }
+    { "cat": "INOVAÇÃO",    "title": "São Paulo Innovation Week 2026 reúne tecnologia, criatividade e futuro no Pacaembu",       "body": "De 13 a 15 de maio, o festival conecta inovação, negócios, experiências e novas narrativas para marcas.",     "tag": "Tech & Futuro",   "source": "SP Innovation Week", "color": "#a78bfa", "icon": "🚀" },
+    { "cat": "CULTURA",     "title": "Virada Cultural 2026 transforma São Paulo no maior palco gratuito do país",               "body": "Nos dias 23 e 24 de maio, a cidade recebe 24 horas de programação, ocupação cultural e diversidade artística.",       "tag": "São Paulo",    "source": "Prefeitura de SP",         "color": "#f4a261", "icon": "🎭" },
+    { "cat": "MÚSICA",   "title": "C6 Fest 2026 ocupa o Ibirapuera com grandes nomes da música nacional e internacional",                          "body": "Robert Plant, The xx, Beirut, Nação Zumbi e outros artistas reforçam SP como capital dos grandes festivais.",             "tag": "Festival",    "source": "Veja SP", "color": "#38bdf8", "icon": "🎵" },
+    { "cat": "MERCADO",      "title": "Setor de eventos no Brasil começa 2026 com consumo recorde e alta nos empregos",             "body": "Dados da ABRAPE mostram o entretenimento ao vivo em expansão, impulsionando marcas, cultura e experiências.",              "tag": "Eventos",     "source": "ABRAPE",  "color": "#34d399", "icon": "📈" },
+    { "cat": "GASTRONOMIA", "title": "Taste São Paulo celebra 10 anos com nova área wellness e mais de 30 restaurantes",           "body": "Festival aposta em gastronomia, bem-estar, música e experiências para ampliar a conexão com o público.",         "tag": "Lifestyle", "source": "Promoview",    "color": "#FF5B1D", "icon": "🍽️" },
+    { "cat": "ENTRETENIMENTO",   "title": "Megashows reforçam o Brasil como potência global do entretenimento ao vivo",          "body": "Show gratuito de Shakira em Copacabana reuniu cerca de 2 milhões de pessoas e movimentou turismo, cultura e cidade.",          "tag": "Live",   "source": "Reuters","color": "#e63946", "icon": "🌎" }
   ]
 }

@@ -5,16 +5,7 @@
   },
 
   "newcomers": [
-    { "name": "Gabriela Mattar",  "firstname": "Gabriela",  "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_gabriela.png" },
-    { "name": "Diego de Souza",   "firstname": "Diego",     "dept": "T.Group",          "role": "Estoque A&B",       "genero": "m", "photo": "assets/people/welcome_diego.png" },
-    { "name": "Erika Ferreira",   "firstname": "Erika",     "dept": "T.Venues",         "role": "Comercial",         "genero": "f", "photo": "assets/people/welcome_erika.png" },
-    { "name": "Enzo",             "firstname": "Enzo",      "dept": "T.Venues",         "role": "Operações",         "genero": "m", "photo": "assets/people/welcome_enzo.png" },
-    { "name": "Arthur",           "firstname": "Arthur",    "dept": "T.Youth",          "role": "Criação",           "genero": "m", "photo": "assets/people/welcome_arthur.png" },
-    { "name": "Julia",            "firstname": "Julia",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "f", "photo": "assets/people/welcome_julia.png" },
-    { "name": "Pamela",           "firstname": "Pamela",    "dept": "T.Brands",         "role": "Marketing",         "genero": "f", "photo": "assets/people/welcome_pamela.png" },
-    { "name": "Ramon",            "firstname": "Ramon",     "dept": "T.Brands",         "role": "Estratégia",        "genero": "m", "photo": "assets/people/welcome_ramon.png" },
-    { "name": "Larissa",          "firstname": "Larissa",   "dept": "T.Youth",          "role": "Criação",           "genero": "f", "photo": "assets/people/welcome_larissa.png" },
-    { "name": "Gabrielle",        "firstname": "Gabrielle", "dept": "T.Group",          "role": "Facilities",        "genero": "f", "photo": "assets/people/welcome_gabrielle.png" }
+    { "name": "Lucas",        "firstname": "Lucas", "dept": "T.Brands",          "role": "Planejamento",        "genero": "m", "photo": "assets/people/welcome_lucas_plan_TB.png" }
   ],
 
   "birthdays": [

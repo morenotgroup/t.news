@@ -39,6 +39,13 @@
 
   "events": [
     {
+      "day": 7, "month": 5, "year": 2026,
+      "time": "16h30 – 18h",
+      "title": "Café das Mães",
+      "desc": "Um momento especial para pausar, respirar, comer algo gostoso, relaxar e tomar uma breja!",
+      "type": "gc", "ic": "🤱", "color": "#97D700"
+    },
+    {
       "day": 21, "month": 5, "year": 2026,
       "time": "20h – 22h",
       "title": "Esportes T.Group",

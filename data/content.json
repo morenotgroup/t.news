@@ -16,23 +16,23 @@
 
   "menu": {
     "Segunda": {
-      "main":  ["Arroz", "Feijão", "Carne Moída", "Purê de Mandioquinha", "Farofa especial"],
+      "main":  ["Arroz", "Feijão", "Costelinha de Porco", "Abobrinha refogada", "Farofa especial"],
       "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura ralada"]
     },
     "Terça": {
-      "main":  ["Arroz", "Feijão", "Filé de Frango empanado", "Creme de Milho"],
+      "main":  ["Arroz", "Feijão", "Filé de Frango", "Abóbora assada"],
       "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba"]
     },
     "Quarta": {
-      "main":  ["Arroz", "Feijão", "Carne de Panela", "Batata Inglesa"],
+      "main":  ["Arroz", "Feijão", "Filé de Carne Acebolada", "Farofa", "Couve"],
       "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
     },
     "Quinta": {
-      "main":  ["Arroz", "Feijão", "Costelinha de Porco", "Farofa de cuscuz"],
+      "main":  ["Lasanha de Carne", "Lasanha de Beringela"],
       "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
     },
     "Sexta": {
-      "main":  ["Macarrão", "Molho ao sugo", "Molho branco", "Filé de Frango"],
+      "main":  ["Arroz", "Feijão", "Filé de Carne", "Purê de Batata"],
       "salad": ["Alface variada", "Tomate", "Cebola"]
     }
   },

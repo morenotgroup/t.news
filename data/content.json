@@ -1,81 +1,61 @@
 {
-  "meta": {
-    "mes": "Maio",
-    "ano": 2026
-  },
-
+  "meta": { "mes": "Maio", "ano": 2026 },
   "newcomers": [
-    { "name": "Lucas",        "firstname": "Luke", "dept": "T.Brands",          "role": "Planejamento",        "genero": "m", "photo": "assets/people/welcome_lucas_plan_TB.png" },
-    { "name": "Cecília",        "firstname": "Cecília", "dept": "T.Youth",          "role": "Criação",        "genero": "f", "photo": "assets/people/welcome_cecilia_tyouth.png" },
-    { "name": "Gabriela",        "firstname": "Gabi", "dept": "T.Youth",          "role": "Criação",        "genero": "f", "photo": "assets/people/welcome_gabriela_tyouth.png" }
+    { "name": "Lucas",   "firstname": "Luke",    "dept": "T.Brands", "role": "Planejamento", "genero": "m", "photo": "assets/people/welcome_lucas_plan_TB.png" },
+    { "name": "Cecília", "firstname": "Cecília", "dept": "T.Youth",  "role": "Criação",      "genero": "f", "photo": "assets/people/welcome_cecilia_tyouth.png" },
+    { "name": "Gabriela","firstname": "Gabi",    "dept": "T.Youth",  "role": "Criação",      "genero": "f", "photo": "assets/people/welcome_gabriela_tyouth.png" }
   ],
-
   "birthdays": [
-    { "name": "Yasmin",    "firstname": "Yas",  "dept": "T.Brands", "date": "12 de Maio", "day": 12,  "month": 5, "photo": "assets/people/1205_bday_yasmin_maio_TB.png" },
-    { "name": "Guilherme",    "firstname": "Molina",      "dept": "T.Youth",        "date": "29 de Maio", "day": 29,  "month": 5, "photo": "assets/people/2905_bday_molina_maio_TY.png" },
-    { "name": "Daniel",    "firstname": "Dani",  "dept": "T.Venues", "date": "29 de Maio", "day": 29,  "month": 4, "photo": "assets/people/2905_bday_daniel_maio_TV.png" }
+    { "name": "Yasmin",    "firstname": "Yas",    "dept": "T.Brands", "date": "12 de Maio", "day": 12, "month": 5, "photo": "assets/people/1205_bday_yasmin_maio_TB.png" },
+    { "name": "Guilherme", "firstname": "Molina", "dept": "T.Youth",  "date": "29 de Maio", "day": 29, "month": 5, "photo": "assets/people/2905_bday_molina_maio_TY.png" },
+    { "name": "Daniel",    "firstname": "Dani",   "dept": "T.Venues", "date": "29 de Maio", "day": 29, "month": 5, "photo": "assets/people/2905_bday_daniel_maio_TV.png" }
   ],
-
   "menu": {
-    "Segunda": {
-      "main":  ["Arroz", "Feijão", "Filé de Carne Acebolado", "Farofa especial"],
-      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura ralada"]
-    },
-    "Terça": {
-      "main":  ["Arroz", "Feijão", "Filé de Frango", "Purê de Mandioquinha"],
-      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba"]
-    },
-    "Quarta": {
-      "main":  ["Arroz", "Feijão", "Strognoff de Frango"],
-      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
-    },
-    "Quinta": {
-      "main":  ["Arroz", "Feijão", "Iscas de Carne com molho Barbecue", "Abobrinha na manteiga"],
-      "salad": ["Alface variada", "Tomate", "Pepino", "Cenoura", "Beterraba", "Ovos de Codorna", "Palmito", "Manga"]
-    },
-    "Sexta": {
-      "main":  ["Arroz", "Feijão", "Filé de Frango", "Farofa"],
-      "salad": ["Alface variada", "Tomate", "Cebola"]
-    }
+    "Segunda": { "main": ["Arroz","Feijao","File de Carne Acebolado","Farofa especial"],              "salad": ["Alface variada","Tomate","Pepino","Cenoura ralada"] },
+    "Terca":   { "main": ["Arroz","Feijao","File de Frango","Pure de Mandioquinha"],                  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba"] },
+    "Quarta":  { "main": ["Arroz","Feijao","Strogonoff de Frango"],                                   "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
+    "Quinta":  { "main": ["Arroz","Feijao","Iscas de Carne molho Barbecue","Abobrinha na manteiga"],  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
+    "Sexta":   { "main": ["Arroz","Feijao","File de Frango","Farofa"],                                "salad": ["Alface variada","Tomate","Cebola"] }
   },
-
   "events": [
-    {
-      "day": 7, "month": 5, "year": 2026,
-      "time": "16h30 – 18h",
-      "title": "Café das Mães",
-      "desc": "Um momento especial para pausar, respirar, comer algo gostoso, relaxar e tomar uma breja!",
-      "type": "gc", "ic": "🤱", "color": "#97D700"
-    },
-    {
-      "day": 28, "month": 5, "year": 2026,
-      "time": "17h00",
-      "title": "Café com T",
-      "desc": "Momento especial de conexão entre as equipes.",
-      "type": "gc", "ic": "☕", "color": "#FF5B1D"
-    },
-    {
-      "day": 28, "month": 5, "year": 2026,
-      "time": "18h20",
-      "title": "Aniversariantes de Maio",
-      "desc": "Celebração especial dos aniversariantes deste mês.",
-      "type": "gc", "ic": "🎂", "color": "#FFAA00"
-    },
-    {
-      "day": 28, "month": 5, "year": 2026,
-      "time": "18h30",
-      "title": "Happy Hour T.Group",
-      "desc": "Confraternização mensal — vem celebrar com a gente!",
-      "type": "gc", "ic": "🥂", "color": "#9B45FF"
-    }
+    { "day": 7,  "month": 5, "year": 2026, "time": "16h30 - 18h",  "title": "Cafe das Maes",            "desc": "Um momento especial para pausar, respirar e relaxar!",           "type": "gc", "ic": "🤱", "color": "#97D700" },
+    { "day": 28, "month": 5, "year": 2026, "time": "17h00",         "title": "Cafe com T",               "desc": "Momento especial de conexao entre as equipes.",                  "type": "gc", "ic": "☕", "color": "#FF5B1D" },
+    { "day": 28, "month": 5, "year": 2026, "time": "18h20",         "title": "Aniversariantes de Maio",  "desc": "Celebracao especial dos aniversariantes deste mes.",             "type": "gc", "ic": "🎂", "color": "#FFAA00" },
+    { "day": 28, "month": 5, "year": 2026, "time": "18h30",         "title": "Happy Hour T.Group",       "desc": "Confraternizacao mensal - vem celebrar com a gente!",            "type": "gc", "ic": "🥂", "color": "#9B45FF" }
   ],
-
+  "highlights": [
+    { "image": "assets/highlights/neo_novas_contas.png", "label": "Neo Formaturas - Novas Contas Fechadas", "company": "Neo Formaturas" },
+    { "image": "assets/highlights/tbrands_1.png",        "label": "T.Brands - Convencao Eletromidia 2026",  "company": "T.Brands" },
+    { "image": "assets/highlights/tbrands_2.png",        "label": "T.Brands - Porsche Fest",                "company": "T.Brands" },
+    { "image": "assets/highlights/tbrands_3.png",        "label": "T.Brands - Taste Sao Paulo 10 anos",     "company": "T.Brands" }
+  ],
+  "ginga": {
+    "titulo": "Ginga Sao Paulo",
+    "subtitulo": "Budweiser Apresenta",
+    "local": "Clube Pinheiros",
+    "copa_inicio": "2026-06-11T00:00:00",
+    "ginga_inicio": "2026-06-13T20:00:00",
+    "artistas": ["Thiaguinho","Pericles","Ferrugem","Turma do Pagode","Pagode do Xando","+5521","Samba da Rosa","Syon Trio","Melhor Eu Ir","DJ GBR","Mais que Nosso"],
+    "flyers": [
+      "assets/ginga/ginga_lineup.png",
+      "assets/ginga/ginga_thiaguinho.png",
+      "assets/ginga/ginga_pericles.png",
+      "assets/ginga/ginga_ferrugem.png",
+      "assets/ginga/ginga_turma.png",
+      "assets/ginga/ginga_xando.png",
+      "assets/ginga/ginga_5521.png",
+      "assets/ginga/ginga_djgbr.png",
+      "assets/ginga/ginga_syon.png",
+      "assets/ginga/ginga_melhor.png",
+      "assets/ginga/ginga_sambarosa.png"
+    ]
+  },
   "news_fallback": [
-    { "cat": "INOVAÇÃO",    "title": "São Paulo Innovation Week 2026 reúne tecnologia, criatividade e futuro no Pacaembu",       "body": "De 13 a 15 de maio, o festival conecta inovação, negócios, experiências e novas narrativas para marcas.",     "tag": "Tech & Futuro",   "source": "SP Innovation Week", "color": "#a78bfa", "icon": "🚀" },
-    { "cat": "CULTURA",     "title": "Virada Cultural 2026 transforma São Paulo no maior palco gratuito do país",               "body": "Nos dias 23 e 24 de maio, a cidade recebe 24 horas de programação, ocupação cultural e diversidade artística.",       "tag": "São Paulo",    "source": "Prefeitura de SP",         "color": "#f4a261", "icon": "🎭" },
-    { "cat": "MÚSICA",   "title": "C6 Fest 2026 ocupa o Ibirapuera com grandes nomes da música nacional e internacional",                          "body": "Robert Plant, The xx, Beirut, Nação Zumbi e outros artistas reforçam SP como capital dos grandes festivais.",             "tag": "Festival",    "source": "Veja SP", "color": "#38bdf8", "icon": "🎵" },
-    { "cat": "MERCADO",      "title": "Setor de eventos no Brasil começa 2026 com consumo recorde e alta nos empregos",             "body": "Dados da ABRAPE mostram o entretenimento ao vivo em expansão, impulsionando marcas, cultura e experiências.",              "tag": "Eventos",     "source": "ABRAPE",  "color": "#34d399", "icon": "📈" },
-    { "cat": "GASTRONOMIA", "title": "Taste São Paulo celebra 10 anos com nova área wellness e mais de 30 restaurantes",           "body": "Festival aposta em gastronomia, bem-estar, música e experiências para ampliar a conexão com o público.",         "tag": "Lifestyle", "source": "Promoview",    "color": "#FF5B1D", "icon": "🍽️" },
-    { "cat": "ENTRETENIMENTO",   "title": "Megashows reforçam o Brasil como potência global do entretenimento ao vivo",          "body": "Show gratuito de Shakira em Copacabana reuniu cerca de 2 milhões de pessoas e movimentou turismo, cultura e cidade.",          "tag": "Live",   "source": "Reuters","color": "#e63946", "icon": "🌎" }
+    { "cat": "INOVACAO",      "title": "Sao Paulo Innovation Week 2026 reune tecnologia, criatividade e futuro no Pacaembu",  "body": "De 13 a 15 de maio, o festival conecta inovacao, negocios, experiencias e novas narrativas para marcas.", "tag": "Tech", "source": "SP Innovation Week", "color": "#a78bfa", "icon": "🚀" },
+    { "cat": "CULTURA",       "title": "Virada Cultural 2026 transforma Sao Paulo no maior palco gratuito do pais",            "body": "Nos dias 23 e 24 de maio, a cidade recebe 24 horas de programacao cultural e diversidade artistica.",      "tag": "SP",   "source": "Prefeitura SP",      "color": "#f4a261", "icon": "🎭" },
+    { "cat": "MUSICA",        "title": "C6 Fest 2026 ocupa o Ibirapuera com grandes nomes da musica nacional e internacional", "body": "Robert Plant, The xx, Beirut, Nacao Zumbi resforcam SP como capital dos grandes festivais.",              "tag": "Festival", "source": "Veja SP",        "color": "#38bdf8", "icon": "🎵" },
+    { "cat": "MERCADO",       "title": "Setor de eventos no Brasil comeca 2026 com consumo recorde e alta nos empregos",       "body": "Dados da ABRAPE mostram o entretenimento ao vivo em expansao, impulsionando marcas e cultura.",           "tag": "Eventos", "source": "ABRAPE",          "color": "#34d399", "icon": "📈" },
+    { "cat": "GASTRONOMIA",   "title": "Taste Sao Paulo celebra 10 anos com nova area wellness e mais de 30 restaurantes",     "body": "Festival aposta em gastronomia, bem-estar, musica e experiencias para ampliar conexao com o publico.",   "tag": "Lifestyle", "source": "Promoview",       "color": "#FF5B1D", "icon": "🍽️" },
+    { "cat": "ENTERTAINMENT", "title": "Megashows reforcam o Brasil como potencia global do entretenimento ao vivo",           "body": "Show gratuito de Shakira em Copacabana reuniu cerca de 2 milhoes de pessoas e movimentou a cidade.",      "tag": "Live", "source": "Reuters",          "color": "#e63946", "icon": "🌎" }
   ]
 }

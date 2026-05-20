@@ -3,6 +3,7 @@
   "newcomers": [
     { "name": "Lucas",   "firstname": "Luke",    "dept": "T.Brands", "role": "Planejamento", "genero": "m", "photo": "assets/people/welcome_lucas_plan_TB.png" },
     { "name": "Cecília", "firstname": "Cecília", "dept": "T.Youth",  "role": "Criação",      "genero": "f", "photo": "assets/people/welcome_cecilia_tyouth.png" },
+    { "name": "Gabriela", "firstname": "Gabi", "dept": "T.Youth",  "role": "Criação",      "genero": "f", "photo": "assets/people/welcome_gabriela_tyouth2.png" },
     { "name": "Gabriela","firstname": "Gabi",    "dept": "T.Youth",  "role": "Criação",      "genero": "f", "photo": "assets/people/welcome_gabriela_tyouth.png" }
   ],
   "birthdays": [

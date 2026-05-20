@@ -16,8 +16,8 @@
 .wel-greeting{font-family:var(--fG);font-size:clamp(2.2rem,4vw,5.2rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:white;text-shadow:0 2px 24px rgba(0,0,0,.55)}
 .wel-hl{color:var(--or)}
 .wel-logo-row{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;gap:clamp(36px,5.5vw,90px);width:100%}
-.wel-brand-logo{height:clamp(48px,7vh,90px);width:auto;max-width:22vw;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 4px 20px rgba(0,0,0,.4));-webkit-animation:logoPulse 5s ease-in-out infinite;animation:logoPulse 5s ease-in-out infinite}
-.wel-brand-logo:nth-child(1){height:clamp(36px,5.2vh,68px)}/* T.Youth is taller */
+.wel-brand-logo{height:clamp(68px,10vh1300px);width:auto;max-width:22vw;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 4px 20px rgba(0,0,0,.4));-webkit-animation:logoPulse 5s ease-in-out infinite;animation:logoPulse 5s ease-in-out infinite}
+.wel-brand-logo:nth-child(1){height:clamp(52px,7.5vh,100px)}/* T.Youth is taller */
 .wel-brand-logo:nth-child(2){-webkit-animation-delay:.8s;animation-delay:.8s}
 .wel-brand-logo:nth-child(3){-webkit-animation-delay:1.6s;animation-delay:1.6s}
 .wel-brand-logo:nth-child(4){-webkit-animation-delay:2.4s;animation-delay:2.4s}

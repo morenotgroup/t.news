@@ -23,14 +23,12 @@
 #stage{position:fixed;top:var(--hdr-top);bottom:var(--ftr-h);left:0;right:0;overflow:hidden}
 #scene-wrap{width:100%;height:100%;position:relative}
 .curtain{position:fixed;top:0;left:0;right:0;bottom:0;z-index:500;pointer-events:none;
-  -webkit-transform:scaleY(0);transform:scaleY(0);-webkit-transform-origin:bottom;transform-origin:bottom;
-  transition:-webkit-transform .38s cubic-bezier(.76,0,.24,1);transition:transform .38s cubic-bezier(.76,0,.24,1)}
-.curtain.down{-webkit-transform:scaleY(1);transform:scaleY(1);-webkit-transform-origin:bottom;transform-origin:bottom}
-.curtain.up{-webkit-transform:scaleY(0);transform:scaleY(0);-webkit-transform-origin:top;transform-origin:top;
-  transition:-webkit-transform .38s cubic-bezier(.76,0,.24,1) .04s;transition:transform .38s cubic-bezier(.76,0,.24,1) .04s}
+  opacity:0;transition:opacity .32s ease}
+.curtain.down{opacity:1}
+.curtain.up{opacity:0;transition:opacity .32s ease .04s}
 .scene-enter{-webkit-animation:sceneIn .65s var(--ease) both;animation:sceneIn .65s var(--ease) both}
-@-webkit-keyframes sceneIn{from{opacity:0;-webkit-transform:translateY(24px)}to{opacity:1;-webkit-transform:none}}
-@keyframes sceneIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@-webkit-keyframes sceneIn{from{opacity:0}to{opacity:1}}
+@keyframes sceneIn{from{opacity:0}to{opacity:1}}
 .scene{width:100%;height:100%;position:relative;overflow:hidden;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
 .ftr{position:fixed;bottom:0;left:0;right:0;z-index:300;height:var(--ftr-h);
   display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;

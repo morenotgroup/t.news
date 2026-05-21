@@ -74,14 +74,30 @@ class App {
     if(name==='birthday'&&this.C.birthdays.some(b=>isToday(b.day,b.month)))setTimeout(launchConfetti,600);
   }
   _subFade(fn){
+    /* Smooth opacity-only crossfade - sem translateY para evitar piscar na TV */
     const el=this._wrap;
-    el.style.cssText='transition:opacity .3s ease,transform .28s ease;opacity:0;transform:translateY(-10px)';
-    setTimeout(()=>{fn();el.style.cssText='transition:none;opacity:0;transform:translateY(14px)';el.offsetHeight;el.style.cssText='transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);opacity:1;transform:none';setTimeout(()=>el.style.cssText='',580);},310);
+    el.style.transition='opacity .28s ease';
+    el.style.opacity='0';
+    setTimeout(()=>{
+      fn();
+      el.style.transition='none';
+      el.style.opacity='0';
+      el.offsetHeight;
+      el.style.transition='opacity .5s ease';
+      el.style.opacity='1';
+      setTimeout(()=>{ el.style.transition=''; el.style.opacity=''; },520);
+    },290);
   }
   transition(fn){
     if(this.transitioning)return;this.transitioning=true;
-    const c=this._curtain;c.classList.remove('up');c.classList.add('down');
-    setTimeout(()=>{fn();c.classList.remove('down');c.classList.add('up');setTimeout(()=>{c.classList.remove('up');this.transitioning=false;},400);},380);
+    const c=this._curtain;
+    c.classList.remove('up'); c.classList.add('down');
+    /* wait for fade-to-black (320ms), swap content, then fade out */
+    setTimeout(()=>{
+      fn();
+      c.classList.remove('down'); c.classList.add('up');
+      setTimeout(()=>{ c.classList.remove('up'); this.transitioning=false; },360);
+    },340);
   }
   goNext(){
     clearTimeout(this.timers.sc);clearInterval(this.timers.nc);clearInterval(this.timers.bd);clearInterval(this.timers.hl);clearInterval(this.timers.gi);
@@ -127,7 +143,7 @@ async function main(){
   const[C,weather]=await Promise.all([loadContent(),fetchWeather()]);
   let news=[];
   try{news=await fetchNews(C.news_fallback||[]);}catch{news=C.news_fallback||[];}
-  document.getElementById('curtain').style.background='#FF5B1D';
+  document.getElementById('curtain').style.background='#000';
   const player=new Player();window.__player=player;
   document.getElementById('music-toggle').addEventListener('click',()=>player.toggle());
   const app=new App(C,weather,news);

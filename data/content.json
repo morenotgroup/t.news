@@ -8,6 +8,7 @@
   ],
   "birthdays": [
     { "name": "Yasmin",    "firstname": "Yas",    "dept": "T.Brands", "date": "12 de Maio", "day": 12, "month": 5, "photo": "assets/people/1205_bday_yasmin_maio_TB.png" },
+    { "name": "Cecília",    "firstname": "Cecília",    "dept": "T.Youth", "date": "18 de Maio", "day": 18, "month": 5, "photo": "assets/people/180526_bday_cecilia_tyouth.png" },
     { "name": "Guilherme", "firstname": "Molina", "dept": "T.Youth",  "date": "29 de Maio", "day": 29, "month": 5, "photo": "assets/people/2905_bday_molina_maio_TY.png" },
     { "name": "Daniel",    "firstname": "Dani",   "dept": "T.Venues", "date": "29 de Maio", "day": 29, "month": 5, "photo": "assets/people/2905_bday_daniel_maio_TV.png" }
   ],

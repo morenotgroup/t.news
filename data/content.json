@@ -13,11 +13,11 @@
     { "name": "Daniel",    "firstname": "Dani",   "dept": "T.Venues", "date": "29 de Maio", "day": 29, "month": 5, "photo": "assets/people/2905_bday_daniel_maio_TV.png" }
   ],
   "menu": {
-    "Segunda": { "main": ["Arroz","Feijao","File de Carne Acebolado","Farofa especial"],              "salad": ["Alface variada","Tomate","Pepino","Cenoura ralada"] },
-    "Terca":   { "main": ["Arroz","Feijao","File de Frango","Pure de Mandioquinha"],                  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba"] },
-    "Quarta":  { "main": ["Arroz","Feijao","Strogonoff de Frango"],                                   "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
-    "Quinta":  { "main": ["Arroz","Feijao","Iscas de Carne molho Barbecue","Abobrinha na manteiga"],  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
-    "Sexta":   { "main": ["Arroz","Feijao","File de Frango","Farofa"],                                "salad": ["Alface variada","Tomate","Cebola"] }
+    "Segunda": { "main": ["Arroz","Feijao","File de Frango","Abobrinha Refogada"],              "salad": ["Alface variada","Tomate","Pepino","Cenoura ralada"] },
+    "Terca":   { "main": ["Arroz","Feijao","File de Frango Empanado","Creme de Milho"],                  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba"] },
+    "Quarta":  { "main": ["Arroz","Feijao","Costelinha de Porco"],                                   "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
+    "Quinta":  { "main": ["Arroz","Feijao","Sobrecoxa Assada","Farofa"],  "salad": ["Alface variada","Tomate","Pepino","Cenoura","Beterraba","Ovos de Codorna","Palmito","Manga"] },
+    "Sexta":   { "main": ["Macarrão","Molho Branco","Molho ao sugo","File de Frango"],                                "salad": ["Alface variada","Tomate","Cebola"] }
   },
   "events": [
     { "day": 7,  "month": 5, "year": 2026, "time": "16h30 - 18h",  "title": "Cafe das Maes",            "desc": "Um momento especial para pausar, respirar e relaxar!",           "type": "gc", "ic": "🤱", "color": "#97D700" },
